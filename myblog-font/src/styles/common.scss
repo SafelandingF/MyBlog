@@ -1,0 +1,31 @@
+//全局引入字体
+@font-face {
+  font-family: ali-font;
+  src: url('../fonts/jjtd1GNNFFHg.woff') format('woff')
+}
+
+@font-face {
+  font-family: yutong-font;
+  src: url('../fonts/yutong.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: zhuanshu-font;
+  src: url('../fonts/YuFanXinYu-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: zhuoti-font;
+  src: url('../fonts/鸿雷拙书简体.otf');
+}
+
+
+
+
+//解决width:100vw出现滚动条的问题
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
