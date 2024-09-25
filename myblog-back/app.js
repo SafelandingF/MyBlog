@@ -3,12 +3,23 @@ const fs = require('fs')
 const path = require('path')
 const cors = require('cors')
 const { expressjwt: jwt } = require('express-jwt')
-
+const multer = require('multer')
 const { port } = require('./config.js').server
 const login = require('./routes/login')
 const jwtConfig = require('./jwt/config.js')
 
+//! 设置路由托管
+
+
+
 const app = express();
+
+
+const upload = multer({
+  dest: './public/upload'
+})
+app.use(upload.any())
+app.use(express.static('./public'))
 
 
 //设置token拦截

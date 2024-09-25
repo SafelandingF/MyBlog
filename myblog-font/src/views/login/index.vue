@@ -1,39 +1,38 @@
 <template>
   <div class="container">
     <div class="text">你是谁</div> 
-
-    <el-form 
-      :model="form"
-    >
-      <el-form-item>
-        <el-input 
-        style="width: 300px;"
-        class="el-input"  v-model="form.account"  placeholder="我是?"></el-input>
-      </el-form-item>     
-    </el-form>
+    <login-input ref='input'  ></login-input>
     
-    
-    <el-button type="primary"  @click.native="checkAccount">提交</el-button>
-  
+    <login-button @click="checkAccount" :text="text"></login-button>
   
   </div>
 </template>
-
+  
 <script setup lang="ts">
-  import { reactive,ref } from 'vue';
+  import LoginButton from './components/LoginButton.vue';
+  import LoginInput from './components/LoginInput.vue'
+  import { computed, onMounted, reactive,ref, watch } from 'vue';
   import { useRouter } from 'vue-router';
   import service from '@/utils/service';
+
+  const input = ref(null)
+
   const router = useRouter();
-  const form = reactive({
-    account:''
-  })
+
+  const text = '登录'
+  //@ts-ignore
+  const account = computed(()=>input.value.account)
+
 
   const checkAccount = () =>{
-    if(form.account === '我') {
+    if(account.value === ''){
+      alert('你到底是谁')
+    }
+    else if(account.value === '我') {
       router.push('/login/myself')
     }
-    else if(form.account != '我' && form.account != ''){
-      service.get(`/login?account=${form.account}`)
+    else if(account.value != '我' && account.value != ''){
+      service.get(`/login?account=${account.value}`)
         .then(result =>{       
           //@ts-ignore
           localStorage.setItem('token',result.token)
@@ -44,8 +43,6 @@
         })
     }
   }
-
-
 </script>
 
 
@@ -70,6 +67,5 @@
       text-align: center;
       justify-content: center;
     }
-    
   }
 </style>
