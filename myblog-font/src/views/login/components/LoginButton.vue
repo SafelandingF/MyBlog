@@ -1,5 +1,5 @@
 <template>
-  <button style="cursor: pointer;">{{props.text}}</button>
+  <button style="cursor: pointer;" class="login-button">{{props.text}}</button>
 </template>
 
 <script setup lang="ts">
@@ -9,106 +9,34 @@
       default: "登录"
     }
   }
-
 )
 
 
 </script>
 <style scoped lang="css">
 /* From Uiverse.io by namecho */ 
-button,
-button::after {
- padding: 16px 20px;
- font-size: 18px;
- background: linear-gradient(45deg, transparent 5%, #000 5%);
- border: 0;
- color: #fff;
- letter-spacing: 3px;
- line-height: 1;
- box-shadow: 6px 0px 0px #02;
- outline: transparent;
- position: relative;
+/* From Uiverse.io by sekaiking */ 
+.login-button {
+  z-index: 100;
+  background-color: white;
+  color: black;
+  border-radius: 10em;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid black;
+  box-shadow: 0 0 0 0 black;
 }
 
-button::after {
- --slice-0: inset(50% 50% 50% 50%);
- --slice-1: inset(80% -6px 0 0);
- --slice-2: inset(50% -6px 30% 0);
- --slice-3: inset(10% -6px 85% 0);
- --slice-4: inset(40% -6px 43% 0);
- --slice-5: inset(80% -6px 5% 0);
- content: "HOVER ME";
- display: block;
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
- text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
- clip-path: var(--slice-0);
-}
+.login-button:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+};
 
-button:hover::after {
- animation: 1s glitch;
- animation-timing-function: steps(2, end);
-}
-
-@keyframes glitch {
- 0% {
-  clip-path: var(--slice-1);
-  transform: translate(-20px, -10px);
- }
-
- 10% {
-  clip-path: var(--slice-3);
-  transform: translate(10px, 10px);
- }
-
- 20% {
-  clip-path: var(--slice-1);
-  transform: translate(-10px, 10px);
- }
-
- 30% {
-  clip-path: var(--slice-3);
-  transform: translate(0px, 5px);
- }
-
- 40% {
-  clip-path: var(--slice-2);
-  transform: translate(-5px, 0px);
- }
-
- 50% {
-  clip-path: var(--slice-3);
-  transform: translate(5px, 0px);
- }
-
- 60% {
-  clip-path: var(--slice-4);
-  transform: translate(5px, 10px);
- }
-
- 70% {
-  clip-path: var(--slice-2);
-  transform: translate(-10px, 10px);
- }
-
- 80% {
-  clip-path: var(--slice-5);
-  transform: translate(20px, -10px);
- }
-
- 90% {
-  clip-path: var(--slice-1);
-  transform: translate(-10px, 0px);
- }
-
- 100% {
-  clip-path: var(--slice-1);
-  transform: translate(0);
- }
-}
-
+.login-button:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+};
 </style>

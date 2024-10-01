@@ -1,8 +1,13 @@
 <template>
   <div class="container">
     <div class="text">猜猜密码是什么</div> 
+
+    <div class="password-input">  
       <login-input ref='input'  ></login-input>
+    </div>
+    <div class="password-button">
       <login-button @click="checkPassword" :text="text"></login-button>
+    </div>
   </div>
 </template>
 
@@ -48,6 +53,41 @@
 
 
 <style scoped lang="scss">
+@keyframes movebackground {
+  0% {
+    background-position: 0  0;
+  };
+  10% {
+    background-position: 110vw 110vh;
+  };
+  20% {
+    background-position: 220vw 220vh;
+  };
+  30% {
+    background-position: 330vw 330vh;
+  };
+  40% {
+    background-position: 440vw 440vh;
+  };
+  50% {
+    background-position: 550vw 550vh;
+  };
+  60% {
+    background-position: 660vw 660vh;
+  };
+  70% {
+    background-position: 770vw 770vh;
+  };
+  80% {
+    background-position: 880vw 880vh;
+  };
+  90% {
+    background-position: 990vw 990vh;
+  };
+  100% {
+    background-position: 1100vw 1100vh;
+  };
+}
 .container{
   width: 100vw;
   height: 100vh;
@@ -56,17 +96,20 @@
   align-items: center;
   overflow: hidden;
   flex-direction: column;
-  background-image: -moz-linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
-  background-image: -webkit-linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
-  background-image: linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
+  background-image: url('@/assets/imgs/noise.webp');
+  animation: movebackground 10s steps(10,end) infinite;
   .text {
     font-family: zhuanshu-font;
-      font-size: 50px;
-      width: 50vh;
+      font-size: 80px;
+      width: 60vh;
       height: 50vh;
-      transform: translateY(75%);
+      transform: translateY(50%);
       text-align: center;
       justify-content: center;
+  }
+
+  .input-container {
+    transform: translateX(-23px) translateY(-50px);
   }
   
 }

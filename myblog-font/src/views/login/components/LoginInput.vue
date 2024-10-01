@@ -30,8 +30,9 @@ defineExpose({
 
 
 .input {
+
   width: 100%;
-  max-width: 270px;
+  max-width: 300px;
   height: 60px;
   padding: 12px;
   font-size: 18px;
@@ -66,7 +67,7 @@ defineExpose({
 
 @keyframes typing {
   from {
-    width: 0;
+    width: 80%;
   }
   to {
     width: 100%;
