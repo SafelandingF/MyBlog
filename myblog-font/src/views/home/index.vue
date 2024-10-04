@@ -6,11 +6,8 @@
     <welcome></welcome>
     <youShouldKnow></youShouldKnow>
     <myProfile></myProfile>
-  <!-- <div class="remain0">
-      你是怎么认识我的？
-      我这个人怎么样 留下你的印象
-  </div> -->
     <messageBroad></messageBroad>
+    <photoShow></photoShow>
   <div class="remain"> 
     喜欢拍一些照片
   </div >
@@ -35,6 +32,7 @@ import welcome from './components/welcome.vue';
 import youShouldKnow from './components/you-should-know.vue';
 import myProfile from './components/my-profile.vue';
 import messageBroad from './components/message-broad.vue';
+import photoShow from './components/photo-show.vue';
 //设置平滑滚动
 const lenis = new Lenis({
   wrapper:window,
