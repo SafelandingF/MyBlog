@@ -2,6 +2,11 @@
   <div class="bgc-container">
     
 
+    <div class="nav-container">
+      1232312313213123
+    </div>
+
+
     <!-- TODO: 这边的你好后面可以加个名字 -->
     <div class="welcome-container">
       <div class="welcome-title0">
@@ -107,13 +112,35 @@
 </div>
 </template>
 
+
+
+
 <script setup lang="ts">
 //设置动画
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { onMounted } from 'vue';
+import Lenis from 'lenis';
+
+//设置平滑滚动
+const lenis = new Lenis({
+  wrapper:window,
+  duration:1.5,
+})
+
+
+function raf(time:any) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
+
+
+
 gsap.registerPlugin(ScrollTrigger)
-onMounted(()=>{
+onMounted(
+  
+()=>{
  
   gsap.fromTo('.ani-wel1',{x:-500,y:0,},{
     keyframes:{
@@ -358,11 +385,25 @@ onMounted(()=>{
 
 
 
-})
+}
+
+
+)
 </script>
 
 
 <style scoped lang="scss">
+
+.nav-container{
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  visibility: hidden;
+}
+
+
 .welcome-container{ 
   height: 100vh;
   width: 100%;
