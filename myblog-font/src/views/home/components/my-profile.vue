@@ -76,7 +76,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-id1',{
@@ -90,7 +90,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-svg2',{
@@ -104,7 +104,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-id2',{
@@ -118,7 +118,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-svg3',{
@@ -132,7 +132,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-id3',{
@@ -146,7 +146,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })  
   gsap.fromTo('.icon-svg4',{
@@ -160,7 +160,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-id4',{
@@ -188,7 +188,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-id4',{
@@ -230,7 +230,7 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 50%',
       scrub:1,
-      markers:true
+      markers:false
     }
   })
   gsap.fromTo('.icon-id5',{
