@@ -1,4 +1,11 @@
+
+
 <template>
+
+  <!-- TODO:这里仍然需要更改一下样式 -->
+
+
+  <!-- TODO: 这里要改一改这个camera-container的样式 应该是设置为一个固定大小 通过绝对定位来让相机和底片重合-->
   <div class="camera-container">
     <div class="camera">
     </div>

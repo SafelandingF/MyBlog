@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import card from '@/components/card.vue';
+import card from '@/components/card-welcome.vue';
 import Typed from 'typed.js';
 import { onMounted,watch } from 'vue';
 

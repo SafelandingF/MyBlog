@@ -8,12 +8,12 @@
     <myProfile></myProfile>
     <messageBroad></messageBroad>
     <photoShow></photoShow>
+    
+    <!-- TODO：这里想要的效果是点击相机 然后相机放大 然后展示 照片集 -->
   <div class="remain"> 
     喜欢拍一些照片
-  </div >
-  <div class="remain">
-    偶尔会写写随笔
   </div>
+  <essayBoard></essayBoard>
   <div class="remain">
     还会留下一些笔记
   </div>
@@ -33,6 +33,7 @@ import youShouldKnow from './components/you-should-know.vue';
 import myProfile from './components/my-profile.vue';
 import messageBroad from './components/message-broad.vue';
 import photoShow from './components/photo-show.vue';
+import essayBoard from './components/essay-board.vue';
 //设置平滑滚动
 const lenis = new Lenis({
   wrapper:window,
