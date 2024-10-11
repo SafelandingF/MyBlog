@@ -66,11 +66,57 @@
 </script>
 <style scoped lang="scss">
 .main_wrapper {
+  position: relative;
+  z-index: -100;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  background-image: url('@/assets/imgs/noise.webp');
+  /*
+  background-image: -moz-linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
+  background-image: -webkit-linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
+  background-image: linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
+  */
+  background-repeat: repeat;
+  @keyframes movebackground {
+    0% {
+      background-position: 0  0;
+    };
+    10% {
+      background-position: 110vw 110vh;
+    };
+    20% {
+      background-position: 220vw 220vh;
+    };
+    30% {
+      background-position: 330vw 330vh;
+    };
+    40% {
+      background-position: 440vw 440vh;
+    };
+    50% {
+      background-position: 550vw 550vh;
+    };
+    60% {
+      background-position: 660vw 660vh;
+    };
+    70% {
+      background-position: 770vw 770vh;
+    };
+    80% {
+      background-position: 880vw 880vh;
+    };
+    90% {
+      background-position: 990vw 990vh;
+    };
+    100% {
+      background-position: 1100vw 1100vh;
+      };
+    }
+  animation: movebackground 10s steps(10,end) infinite;
+
 }
 
 .main {
@@ -475,7 +521,7 @@
   display: flex;
   flex-direction: row;
   column-gap: 6em;
-  z-index: -5;
+  z-index: -1;
   margin-bottom: 2em;
   align-items: center;
   justify-content: center;
@@ -484,6 +530,7 @@
 }
 
 .text_4041 {
+
   transform: scaleY(20) scaleX(11);
 }
 

@@ -19,6 +19,7 @@
   <div class="remain">
     间接性自恋加社恐
   </div>
+  <noteBoard></noteBoard>
 
 </div>
 </template>
@@ -33,6 +34,8 @@ import myProfile from './components/my-profile.vue';
 import messageBroad from './components/message-broad.vue';
 import photoShow from './components/photo-show.vue';
 import essayBoard from './components/essay-board.vue';
+import noteBoard from './components/note-board.vue';
+
 //设置平滑滚动
 const lenis = new Lenis({
   wrapper:window,

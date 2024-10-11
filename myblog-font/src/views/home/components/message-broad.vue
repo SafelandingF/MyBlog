@@ -4,6 +4,7 @@
     <span id="me-text"></span>
   </div>
   <div class="message-container">
+    <edit-button></edit-button>
     <!-- TODO:这里要实现 一个hover -->
     <div class="card-container">
       <div class="card-preview">
@@ -32,7 +33,7 @@
 import card from '@/components/card-welcome.vue';
 import Typed from 'typed.js';
 import { onMounted,watch } from 'vue';
-
+import editButton from '@/components/edit-button.vue';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -75,6 +76,7 @@ onMounted(() => {
 
 
 .message-container {
+  position: relative;
   width: 100vw;
   height: 80vh;
   display: flex;
