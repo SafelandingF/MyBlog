@@ -86,16 +86,17 @@ router.get('/password', (req, res) => {
     .then(result => {
       if (result[0].password === password) {
         const user = {
-          authorization: '1',
+          authorization: 1,
           account: 'admin',
           password: '',
           create_time: '',
           id: 1,
+          token: ''
         }
         const tokenStr = jwt.sign(user, jwtConfig.jwtSecretKey, {
           expiresIn: '24h'
         })
-        console.log(user)
+        user.token = tokenStr;
         res.send({
           result: user,
           message: '密码正确',

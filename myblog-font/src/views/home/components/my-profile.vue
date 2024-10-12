@@ -261,7 +261,7 @@ onMounted(()=>{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows:1fr 1fr 1fr 1fr 6fr;
-  row-gap: 30px;
+  row-gap: 10px;
   align-items: center;
   justify-items: center;
   .icon-name{

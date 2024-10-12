@@ -1,6 +1,6 @@
 <template>
   <div class="note-board-container">
-    <edit-button></edit-button>
+    <edit-button v-show="userinfo.authorization"></edit-button>
     <div class="note-welcome">
       <h1>有用的笔记！！！</h1>
     </div>
@@ -15,6 +15,11 @@
 <script setup lang="ts">
 import note from '@/components/note.vue';
 import editButton from '@/components/edit-button.vue';
+import useUserinfoStore from '@/stores/userInfo';
+import { storeToRefs } from 'pinia';
+const  userInfoStore = useUserinfoStore()
+const { userinfo } = storeToRefs(userInfoStore)
+
 </script>
 
 

@@ -3,9 +3,6 @@ import { ref, computed, reactive } from "vue";
 import { type UserInfo } from "@/interface/user";
 
 const useUserinfoStore = defineStore("userinfo", () => {
-
-
-
   const userinfo = reactive<UserInfo>({
     account: "",
     password: "",
@@ -21,14 +18,9 @@ const useUserinfoStore = defineStore("userinfo", () => {
     userinfo.token = data.token;
     userinfo.id = data.id;
   };
-
-
-
   return {
     userinfo, setUserInfo
   }
-
-
 })
 
 

@@ -17,6 +17,10 @@
   import { reactive,ref ,computed} from 'vue';
   import { useRouter } from 'vue-router';
   import service from '@/utils/service';
+  import useUserinfoStore from '@/stores/userInfo';
+  import type { UserInfo } from '@/interface/user';
+
+  const userinfoStore = useUserinfoStore();
   const router = useRouter();
   const input= ref(null)
   const password = computed(()=>{
@@ -25,18 +29,18 @@
   })
   const text = '确定吗？'
   
-
-
   const checkPassword = () => {
     //后端进行密码校对 对了就有返回值
     service.get(`/login/password?account=admin&password=${password.value}`)
-    
     .then(res=>{
-      console.log(res)
       //@ts-ignore
       if(res.token) {
         //@ts-ignore
         localStorage.setItem('token',res.token)
+        //@ts-ignore
+        const result = res.result as UserInfo
+        //@ts-ignore
+        userinfoStore.setUserInfo(result)
         router.push('/home')
       }
       else {

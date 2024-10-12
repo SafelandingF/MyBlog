@@ -4,7 +4,7 @@
     <span id="me-text"></span>
   </div>
   <div class="message-container">
-    <edit-button></edit-button>
+    <edit-button v-show="userinfo.authorization"></edit-button>
     <!-- TODO:这里要实现 一个hover -->
     <div class="card-container">
       <div class="card-preview">
@@ -32,14 +32,19 @@
 <script setup lang="ts">
 import card from '@/components/card-welcome.vue';
 import Typed from 'typed.js';
-import { onMounted,watch } from 'vue';
+import { onMounted,toRef,watch } from 'vue';
 import editButton from '@/components/edit-button.vue';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import useUserinfoStore from '@/stores/userInfo';
+import { storeToRefs } from 'pinia';
+const  userInfoStore = useUserinfoStore()
+const { userinfo } = storeToRefs(userInfoStore)
+
 
 
 onMounted(() => {
-
+  console.log(userinfo.value.authorization)
   const typed = new Typed('#me-text', {
     strings: ['你对我的第一印象是什么', 
               '现在觉得我是个什么样的人',
@@ -56,8 +61,6 @@ onMounted(() => {
       typed.start()
     }
   })  
-
-
 })
 
 </script>
