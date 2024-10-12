@@ -1,8 +1,8 @@
 const routes = [
   {
     name: 'login',
-    path: '/login',
-    redirect: '/login/vistor',
+    path: '/',
+    redirect: '/vistor',
     children: [
       {
         name: 'vistor',
@@ -18,7 +18,7 @@ const routes = [
   },
   {
     name: 'home',
-    path: '/',
+    path: '/home',
     component: () => import('@/views/home/index.vue')
   },
   {

@@ -10,9 +10,19 @@ const service = axios.create({
 
 
 //! 在请求拦截器处设置请求头的token
+
+
+/*
+  @ 我们在拦截器部分设置请求体token即可 
+  @ 并不需要在这一步判断路由条件
+  @ 在route中处理有无token的情况
+*/
 service.interceptors.request.use(config => {
-  if (localStorage.getItem('Token')) {
+
+  if (localStorage.getItem('token')) {
     config.headers['token'] = localStorage.getItem('token')
+  }
+  else {
     return config
   }
   return config
@@ -20,6 +30,8 @@ service.interceptors.request.use(config => {
   console.log(err)
   return Promise.reject(err)
 })
+
+
 
 
 //! 响应拦截器 但还不知道能用来干什么

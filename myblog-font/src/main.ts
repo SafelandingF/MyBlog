@@ -10,11 +10,16 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import vue3lottie from 'vue3-lottie'
 
-const app = createApp(App)
 
-app.use(createPinia())
-app.use(vue3lottie)
+
+
+const app = createApp(App)
+const pinia = createPinia()
+
 app.use(router)
+app.use(pinia)
+app.use(vue3lottie)
+
 app.use(ElementPlus)
 
 

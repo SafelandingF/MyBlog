@@ -29,7 +29,9 @@
 
   const checkPassword = () => {
     //后端进行密码校对 对了就有返回值
-    service.get(`/login/password?account=admin&password=${password.value}`).then(res=>{
+    service.get(`/login/password?account=admin&password=${password.value}`)
+    
+    .then(res=>{
       console.log(res)
       //@ts-ignore
       if(res.token) {

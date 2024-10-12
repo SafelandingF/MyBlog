@@ -3,9 +3,10 @@ const router = express.Router()
 const db = require('../db/db').db
 const jwt = require('jsonwebtoken')
 const jwtConfig = require('../jwt/config')
+const { use } = require('express/lib/application')
 
 
-
+// token 只是用来校验密钥的 并不需要在数据库保存
 
 router.get('/', (req, res) => {
   const sqlParams = req.query.account
@@ -14,7 +15,6 @@ router.get('/', (req, res) => {
   const sql = `SELECT * FROM user WHERE account = ?`
   db(sql, sqlParams)
     .then(result => {
-
       //访客账号
       if (result.length > 0 && sqlParams != 'admin') {
         console.log('账号已存在且通过')
@@ -28,20 +28,19 @@ router.get('/', (req, res) => {
         const tokenStr = jwt.sign(user, jwtConfig.jwtSecretKey, {
           expiresIn: '24h'
         })
-
+        user.token = tokenStr;
+        console.log(user)
         res.send({
-          result: result[0],
+          result: user,
           message: '登录成功',
           token: 'Bearer ' + tokenStr,
         })
-        //通过
       }
       //如果是管理员
       else if (sqlParams === 'admin') {
         console.log('管理员账号通过')
         //给前端返回token
         res.send({
-          result: result[0].account,
           message: '请输入密码',
         })
 
@@ -78,7 +77,7 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err))
 })
 
-
+//管理员登录
 router.get('/password', (req, res) => {
   const password = req.query.password
   const account = req.query.account
@@ -87,15 +86,18 @@ router.get('/password', (req, res) => {
     .then(result => {
       if (result[0].password === password) {
         const user = {
+          authorization: '1',
           account: 'admin',
           password: '',
           create_time: '',
-          id: '1'
+          id: 1,
         }
         const tokenStr = jwt.sign(user, jwtConfig.jwtSecretKey, {
           expiresIn: '24h'
         })
+        console.log(user)
         res.send({
+          result: user,
           message: '密码正确',
           token: 'Bearer ' + tokenStr
         })
@@ -108,4 +110,6 @@ router.get('/password', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
+
 module.exports = router

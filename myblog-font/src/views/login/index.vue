@@ -2,7 +2,7 @@
   <div class="container">
     <div class="text">你是谁</div> 
     <div class="login">
-    <login-input ref='input'  class="login-input"></login-input>
+    <login-input ref='input' class="login-input"></login-input>
     <login-button @click="checkAccount" :text="text" class="login-button"></login-button>
     </div>
   </div>
@@ -14,29 +14,39 @@
   import { computed, onMounted, reactive,ref, watch } from 'vue';
   import { useRouter } from 'vue-router';
   import service from '@/utils/service';
+  import { type UserInfo ,type LoginResData } from '@/interface/user';
+  import useUserinfoStore from '@/stores/userInfo';
+  
 
   const input = ref(null)
-
   const router = useRouter();
-
   const text = '登录'
   //@ts-ignore
   const account = computed(()=>input.value.account)
-
+  const userInfoStore = useUserinfoStore()
 
   const checkAccount = () =>{
     if(account.value === ''){
       alert('你到底是谁')
     }
     else if(account.value === '我') {
-      router.push('/login/myself')
+      router.push('/myself')
     }
     else if(account.value != '我' && account.value != ''){
-      service.get(`/login?account=${account.value}`)
-        .then(result =>{       
+      service.get<LoginResData>(`/login?account=${account.value}`)
+        .then(res =>{    
+
+
+          //! FIXME:这里的类型报错好像和axios的配置有问题 我们修改了res的返回类型
           //@ts-ignore
-          localStorage.setItem('token',result.token)
-          router.push('/')
+          const result= res.result as UserInfo
+          console.log(res)
+          userInfoStore.setUserInfo(result)
+          //@ts-ignore
+          localStorage.setItem('token',res.token)
+          router.push('/home')
+
+          
         })
         .catch(err => {
           console.log(err)

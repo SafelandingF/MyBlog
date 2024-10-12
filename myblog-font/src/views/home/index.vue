@@ -24,6 +24,10 @@
 </div>
 </template>
 <script setup lang="ts">
+import {onMounted} from 'vue'
+
+
+
 //设置动画
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -48,6 +52,14 @@ function raf(time:any) {
 requestAnimationFrame(raf)
 //！ FIXME: 这里的插件只能注册一次 不然会出错
 gsap.registerPlugin(ScrollTrigger)
+
+
+onMounted(()=>{
+
+})
+
+
+
 </script>
 
 
