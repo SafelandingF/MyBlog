@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../db/db').db
 const jwt = require('jsonwebtoken')
 const jwtConfig = require('../jwt/config')
-const { use } = require('express/lib/application')
+
 
 
 // token 只是用来校验密钥的 并不需要在数据库保存
@@ -28,6 +28,7 @@ router.get('/', (req, res) => {
         const tokenStr = jwt.sign(user, jwtConfig.jwtSecretKey, {
           expiresIn: '24h'
         })
+
         user.token = tokenStr;
         console.log(user)
         res.send({

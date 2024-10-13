@@ -1,3 +1,6 @@
+<!-- TODO:这里有空重构一下 不然真是太屎山了 -->
+
+
 <template>
   <div class="my-profile">
       
@@ -244,7 +247,6 @@ onMounted(()=>{
       start:'top 80%',
       end:'bottom 80%',
       scrub:1,
-      
     }
   })
   //#endregion

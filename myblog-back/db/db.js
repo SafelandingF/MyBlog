@@ -6,9 +6,7 @@ exports.db = (sql, sqlParams) => {
   sqlParams = sqlParams || []
   return new Promise((resolve, reject) => {
     const pool = mysql.createPool(config)
-
     console.log('db connected')
-
     pool.getConnection((err, conn) => {
       if (!err) {
         conn.query(sql, sqlParams, (err, result) => {

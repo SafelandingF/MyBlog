@@ -35,8 +35,6 @@
     else if(account.value != '我' && account.value != ''){
       service.get<LoginResData>(`/login?account=${account.value}`)
         .then(res =>{    
-
-
           //! FIXME:这里的类型报错好像和axios的配置有问题 我们修改了res的返回类型
           //@ts-ignore
           const result= res.result as UserInfo
@@ -45,8 +43,6 @@
           //@ts-ignore
           localStorage.setItem('token',res.token)
           router.push('/home')
-
-          
         })
         .catch(err => {
           console.log(err)

@@ -5,12 +5,13 @@ const cors = require('cors')
 const { expressjwt: jwt } = require('express-jwt')
 const multer = require('multer')
 const { port } = require('./config.js').server
-const login = require('./routes/login')
+
 const jwtConfig = require('./jwt/config.js')
 
 //! 设置路由托管
-
-
+const login = require('./routes/login')
+const message = require('./routes/message')
+const user = require('./routes/user')
 
 const app = express();
 
@@ -30,7 +31,10 @@ app.use(jwt({
   path: [
     '/login',
     '/register',
-    '/login/password'
+    '/login/password',
+    '/message/getmessage',
+    '/message/addmessage',
+    '/message/getcomment',
   ]
 })
 )
@@ -55,8 +59,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/login', login)
-
-
+app.use('/message', message)
+app.use('/user', user)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)

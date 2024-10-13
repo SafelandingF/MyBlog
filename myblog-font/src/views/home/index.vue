@@ -24,6 +24,11 @@
 </div>
 </template>
 <script setup lang="ts">
+
+// TODO: 这里应该需要检测一下用户的pinia中是否存有数据
+// TODO: 如果没有的话 检验一下是否登录过 如果登录过的话 就去请求一下数据
+// TODO: 如果没有登录过的话 就跳转到登录页面
+
 import {onMounted} from 'vue'
 
 
