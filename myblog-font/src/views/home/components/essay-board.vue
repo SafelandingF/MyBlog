@@ -1,7 +1,7 @@
 <template>
   <div class="essay-board-container">
+    <edit-button v-show="userinfo.authorization" @click=""></edit-button>
     <div class="essay-board">
-      <edit-button v-show="userInfoStore.userinfo.authorization"></edit-button>
       <cardAcrticle></cardAcrticle>
       <cardAcrticle></cardAcrticle>
       <cardAcrticle></cardAcrticle>
@@ -13,12 +13,16 @@
 <script setup lang="ts">  
   import cardAcrticle from '@/components/card-acrticle.vue'; 
   import useUserinfoStore from '@/stores/userInfo';
+  import editButton from '@/components/edit-button.vue';
+  import { storeToRefs } from 'pinia';
   const userInfoStore = useUserinfoStore();
+  const {userinfo} = storeToRefs(userInfoStore)
 </script>
 
 <style scoped lang="scss">
 
   .essay-board-container {
+    position: relative;
     width: 100%;
     height: 150vh;
     flex-wrap: wrap;
