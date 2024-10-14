@@ -6,7 +6,7 @@
     </div>
     <div class="essay-preview-container">
       <!-- TODO:这里想写一个插槽 来插入文本 -->
-      <div class="essay-preview">32323</div>
+       <div class="essay-preview" >32323</div>
     </div>
   </div>
 </template>
@@ -15,6 +15,8 @@
   import gsap from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import { onMounted } from 'vue';
+
+
 onMounted(()=>{
   gsap.fromTo('.essay-container',{
     opacity:0.1,
@@ -22,7 +24,6 @@ onMounted(()=>{
     opacity:1,
     scrollTrigger:{
       trigger: '.essay-container',
-      markers:true,
       start:'top 60%',
       end:'-=250',
       scrub:3

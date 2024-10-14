@@ -1,11 +1,30 @@
 <template>
-  <div class="card">
+  <div class="card" @mouseenter=" uplodad">
     <div class="card-overlay"></div>
+    <div class="card-account">{{ account }}</div>
     <div class="card-inner">你是怎么认识我的？</div>
+    <div class="card-message">{{ message }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
+
+import { ref,reactive, toRefs } from 'vue';
+interface messageBroad {
+  account:string,
+  message:string,
+  message_id:number,
+  comment?:Array<string> | null //comment使用另一种方法实现
+ }
+const props = defineProps<messageBroad>()
+const { account,message,message_id} = toRefs(props) 
+
+const emit = defineEmits(['uplodad:message_id'])
+
+const uplodad =()=>{
+  emit('uplodad:message_id',message_id.value)
+}
+
 
 </script>
 
