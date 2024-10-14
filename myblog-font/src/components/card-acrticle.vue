@@ -37,8 +37,6 @@ onMounted(()=>{
 </script>
 <style scoped lang="scss">
 .essay-container{ 
-  transform: translateX(100px);
-
   width: 36vw;
   height: 30vh;
   min-width: 500px;

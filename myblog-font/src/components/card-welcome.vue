@@ -4,6 +4,7 @@
     <div class="card-account">{{ account }}</div>
     <div class="card-inner">你是怎么认识我的？</div>
     <div class="card-message">{{ message }}</div>
+    <slot></slot>
   </div>
 </template>
 

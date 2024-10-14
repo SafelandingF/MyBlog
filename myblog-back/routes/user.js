@@ -20,7 +20,28 @@ router.get('/', (req, res) => {
           if (err) {
             res.send.status(500).json({ message: 'Internal Server Error' })
           } else {
-            res.status(200).json({ message: 'success', data: result })
+            const resp = {
+              ...result[0],
+              password: '',
+              create_time: '',
+              token: token
+            }
+
+
+            res.status(200).json({ message: 'success', data: resp })
+            // {
+            //     "message": "success",
+            //     "data": {
+            //         "result": {
+            //             "account": "admin",
+            //             "password": "",
+            //             "id": 1,
+            //             "create_time": "",
+            //             "authorization": 1
+            //         }
+            //     }
+            // }
+
           }
         })
       }

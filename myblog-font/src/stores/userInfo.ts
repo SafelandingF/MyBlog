@@ -17,6 +17,7 @@ const useUserinfoStore = defineStore("userinfo", () => {
     userinfo.authorization = data.authorization;
     userinfo.token = data.token;
     userinfo.id = data.id;
+    console.log('设置用户信息成功')
   };
   return {
     userinfo, setUserInfo

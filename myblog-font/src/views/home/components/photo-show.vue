@@ -33,7 +33,7 @@ gsap.fromTo('.camera',{
         trigger: '.camera',
         start:'top 60%',
         end : "-=250",
-        markers: true,
+        
         scrub:2
     }
 })
@@ -49,7 +49,7 @@ x: -410
         trigger: '.camera',
         start:'top 60%',
         end : "-=250",
-        markers: true,
+        
         scrub:2
     }
 })
@@ -62,7 +62,7 @@ gsap.fromTo('.text',{
         trigger: '.camera',
         start:'top 60%',
         end : "-=250",
-        markers: true,
+        
         scrub:1
     }
 }

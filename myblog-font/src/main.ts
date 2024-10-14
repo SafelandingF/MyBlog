@@ -15,9 +15,9 @@ import vue3lottie from 'vue3-lottie'
 
 const app = createApp(App)
 const pinia = createPinia()
-
-app.use(router)
 app.use(pinia)
+app.use(router)
+
 app.use(vue3lottie)
 
 app.use(ElementPlus)

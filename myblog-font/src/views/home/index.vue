@@ -29,14 +29,15 @@
 // TODO: 如果没有的话 检验一下是否登录过 如果登录过的话 就去请求一下数据
 // TODO: 如果没有登录过的话 就跳转到登录页面
 
-import {onMounted} from 'vue'
-
-
-
+import {onBeforeMount, onMounted} from 'vue'
+import service from '@/utils/service';
+import useUserinfoStore from '@/stores/userInfo';
+import type { UserInfo } from '@/interface/user';
 //设置动画
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Lenis from 'lenis';
+//用到的组件
 import welcome from './components/welcome.vue';
 import youShouldKnow from './components/you-should-know.vue';
 import myProfile from './components/my-profile.vue';
@@ -58,10 +59,26 @@ requestAnimationFrame(raf)
 //！ FIXME: 这里的插件只能注册一次 不然会出错
 gsap.registerPlugin(ScrollTrigger)
 
+//! FIXME:这里不能正确的获得用户信息 ？？ 是生命周期的问题吗 
+//? 好像有可以了 好神奇？？？
+const getUserinfo = async() =>{
+  const userInfoStore = await useUserinfoStore()
+  service.get('/user')
+  .then(res =>{
+    userInfoStore.setUserInfo(res.data) 
+    console.log(res.data)
+    console.log('get')
+  })
+  .catch(err =>{
+    console.log(err)
+    console.log('err')
+  })
+}
 
-onMounted(()=>{
-
+onBeforeMount(()=>{
+  getUserinfo()
 })
+
 
 
 

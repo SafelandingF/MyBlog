@@ -32,9 +32,6 @@ app.use(jwt({
     '/login',
     '/register',
     '/login/password',
-    '/message/getmessage',
-    '/message/addmessage',
-    '/message/getcomment',
   ]
 })
 )

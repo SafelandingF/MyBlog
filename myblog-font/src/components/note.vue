@@ -3,11 +3,11 @@
   <div class="note-container">    
 
       <div class="note-tag-container">
-        <noteTag></noteTag>
-        <noteTag></noteTag>
-        <noteTag></noteTag>
+        <noteTag name="vue"></noteTag>
+        <noteTag name="pinia"></noteTag>
+        <noteTag name="nodejs"></noteTag>
+        <noteTag name="element"></noteTag>
      </div>
-
     <div class="note-content">
 
       <!-- TODO:这里要进行文本的插入 -->
