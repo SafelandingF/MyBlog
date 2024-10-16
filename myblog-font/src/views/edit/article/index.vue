@@ -1,6 +1,5 @@
 <template>
   <div class="editor-container" >
-
     <div 
     class="article-editor"
     style="border: 1px solid #ccc">
@@ -18,6 +17,7 @@
       @onCreated="handleCreated"
     />
     </div> 
+    <button @click="getHtml">获取实例</button>
 </div>
 </template>
 
@@ -53,6 +53,9 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
     })
     const handleCreated = (editor) => {
       editorRef.value = editor // 记录 editor 实例，重要！
+    }
+    const getHtml = () =>{
+      console.log(editorRef.value.getHtml())
     }
 </script>    
 

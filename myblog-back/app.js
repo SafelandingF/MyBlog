@@ -12,6 +12,8 @@ const jwtConfig = require('./jwt/config.js')
 const login = require('./routes/login')
 const message = require('./routes/message')
 const user = require('./routes/user')
+const article = require('./routes/article.js')
+const note = require('./routes/note.js')
 
 const app = express();
 
@@ -58,6 +60,8 @@ app.use((req, res, next) => {
 app.use('/login', login)
 app.use('/message', message)
 app.use('/user', user)
+app.use('/article', article)
+app.use('/note', note)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
