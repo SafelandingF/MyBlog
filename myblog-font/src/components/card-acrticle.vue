@@ -1,22 +1,37 @@
 <template>
-  <div class="essay-container">
-    <span class="essay-icon">1</span>
+
+  <!-- TODO: 这里需要完善动画 同时 搞一个悬浮和查看详细的按钮 -->
+  <div class="essay-container" @click="goToEassay">
+    <span class="essay-icon">{{props.iconNumber}}</span>
     <div class="essay-image-container">
       <div class="essay-image"></div>
     </div>
     <div class="essay-preview-container">
-      <!-- TODO:这里想写一个插槽 来插入文本 -->
-       <div class="essay-preview" >32323</div>
+      <!-- 还是不用插槽比较好 这里不需要控制文本 -->
+       <div class="essay-preview" >{{props.preview}}</div>    
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+
   import gsap from 'gsap';
-  import ScrollTrigger from 'gsap/ScrollTrigger';
-  import { onMounted } from 'vue';
+  import { onMounted,ref} from 'vue';
+  import { useRouter } from 'vue-router';
+  const router = useRouter()
+  const props = defineProps<{
+    title:string,
+    preview:string,
+    image:string,
+    id:number,
+    iconNumber:number
+  }>()
+  const goToEassay = () =>{
+    router.push(`/detail-article/${props.id}`)
+  }
+  
 
-
+// gsap动画  
 onMounted(()=>{
   gsap.fromTo('.essay-container',{
     opacity:0.1,

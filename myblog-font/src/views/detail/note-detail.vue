@@ -1,5 +1,5 @@
 <template>
-  <div>edit-attirrlce</div>
+  <div>note-detail</div>
 </template>
 
 <script setup lang="ts">

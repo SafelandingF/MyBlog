@@ -4,11 +4,14 @@
     <div class="note-welcome">
       <h1>有用的笔记！！！</h1>
     </div>
-    <note></note>
-    <note></note>
-    <note></note>
-    <note></note>
-    <note></note>
+    <note
+    v-for="(item,index) in noteInfo"
+    :note_id="item.note_id"
+    :title="item.title"
+    :description="item.description"
+    :key="item.note_id"
+    :tags="item.tags"
+    ></note>
   </div>
 </template>
 
@@ -17,8 +20,34 @@ import note from '@/components/note.vue';
 import editButton from '@/components/edit-button.vue';
 import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';
+import service from '@/utils/service';
+import { ref,onMounted } from 'vue';
+
+
+interface Note {
+  note_id:number,
+  title:string,
+  description:string,
+  tags:{tag:string}[]
+}
 const  userInfoStore = useUserinfoStore()
 const { userinfo } = storeToRefs(userInfoStore)
+const noteInfo = ref<Note[]>([])
+
+
+const getNote = () =>{
+  service.get('/note/getnote')
+  .then(res =>{
+    noteInfo.value = res.data
+    console.log('123')
+    console.log(noteInfo.value)
+    console.log('123')
+  })
+}
+
+onMounted(()=>{
+  getNote()
+})
 
 </script>
 

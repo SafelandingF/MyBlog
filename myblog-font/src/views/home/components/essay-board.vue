@@ -2,10 +2,14 @@
   <div class="essay-board-container">
     <edit-button v-show="userinfo.authorization" @click=""></edit-button>
     <div class="essay-board">
-      <cardAcrticle></cardAcrticle>
-      <cardAcrticle></cardAcrticle>
-      <cardAcrticle></cardAcrticle>
-      <cardAcrticle></cardAcrticle>
+      <cardAcrticle 
+      v-for="(item,index) in essay" 
+      :id="item.article_id"
+      :image="item.imageUrl"
+      :title="item.title"
+      :preview="item.description"
+      :icon-number="index"
+      ></cardAcrticle>
     </div>
   </div>
 </template>
@@ -15,8 +19,38 @@
   import useUserinfoStore from '@/stores/userInfo';
   import editButton from '@/components/edit-button.vue';
   import { storeToRefs } from 'pinia';
+  import service from '@/utils/service';
+  import { reactive, ref , onMounted } from 'vue';
+  import { get } from 'node_modules/axios/index.cjs';
+  interface Essay{
+    article_id:number,
+    imageUrl:string,
+    title:string,
+    description: string
+  }
+  // TODO:这里还有分表 任务
   const userInfoStore = useUserinfoStore();
   const {userinfo} = storeToRefs(userInfoStore)
+  const essay = ref<Essay[]>([])
+  const getEssay = () =>{
+    service.get('/article/getarticle')
+    .then(res =>{
+      essay.value = res.data
+      console.log('---')
+      console.log(essay.value)
+      console.log('---')
+    })
+    .catch(err => console.log(err))
+  }
+
+
+  onMounted(()=>{
+    getEssay()
+  })
+
+
+
+
 </script>
 
 <style scoped lang="scss">

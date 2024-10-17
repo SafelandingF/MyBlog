@@ -5,7 +5,7 @@ const db = require('../db/db').db
 
 router.get('/getarticle', (req, res) => {
   const sql = `
-  select imageUrl,title,description from article;
+  select article_id,imageUrl,title,description from article;
   `
   db(sql).
     then(result => {

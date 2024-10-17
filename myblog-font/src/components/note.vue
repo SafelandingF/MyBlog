@@ -1,24 +1,32 @@
 <template>
   
-  <div class="note-container">    
-
+  <div class="note-container" @click="goToNote">    
       <div class="note-tag-container">
-        <noteTag name="vue"></noteTag>
-        <noteTag name="pinia"></noteTag>
-        <noteTag name="nodejs"></noteTag>
-        <noteTag name="element"></noteTag>
+        <noteTag v-for="item in props.tags"
+        :name="item.tag"
+        ></noteTag>
      </div>
     <div class="note-content">
-
       <!-- TODO:这里要进行文本的插入 -->
-      <h1>标题</h1>
-      <p>内容123</p>
+      <h1>{{props.title}}</h1>
+      <p>{{props.description}}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import noteTag from './note-tag.vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+const props = defineProps<{
+  note_id:number,
+  description:string,
+  title:string,
+  tags:{tag:string}[],
+}>()
+const goToNote = () =>{
+  router.push(`/detail-note/${props.note_id}`)
+}
 </script>
 
 <style scoped lang="scss">

@@ -2,12 +2,10 @@ const express = require('express');
 const fs = require('fs')
 const path = require('path')
 const cors = require('cors')
-const { expressjwt: jwt } = require('express-jwt')
 const multer = require('multer')
+const { expressjwt: jwt } = require('express-jwt')
 const { port } = require('./config.js').server
-
 const jwtConfig = require('./jwt/config.js')
-
 //! 设置路由托管
 const login = require('./routes/login')
 const message = require('./routes/message')
@@ -17,7 +15,7 @@ const note = require('./routes/note.js')
 
 const app = express();
 
-
+//这里是文件传输
 const upload = multer({
   dest: './public/upload'
 })
@@ -46,7 +44,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 
-//拦截错误
+//拦截错误 其实还没有用到过
 app.use((req, res, next) => {
   res.cc = (err, status = 1) => {
     res.send({
