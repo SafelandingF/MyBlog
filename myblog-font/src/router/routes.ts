@@ -35,6 +35,10 @@ const routes = [
     component: () => import('@/views/404/index.vue')
   },
 
+
+
+
+
   //查看文章路由
   {
     name: 'article',
@@ -60,10 +64,14 @@ const routes = [
     name: 'edit-article-id',
     path: '/edit-article/:id',
     //@ts-ignore
-    component: () => import('@/views/edit/article/components/detail.vue')
+    component: () => import('@/views/edit/article/components/edit-detail.vue')
   },
-
-
+  {
+    name: 'add-article',
+    path: '/add-article',
+    //@ts-ignore
+    component: () => import('@/views/edit/article/components/add-article.vue')
+  },
   {
     name: 'edit-note',
     path: '/edit-note',

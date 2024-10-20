@@ -72,5 +72,21 @@ router.delete('/deletearticle', (req, res) => {
       })
     })
 })
+router.post('/editarticle', (req, res) => {
+  const { article_id, title, description, imageUrl, article, categories } = req.body
+  const sql = `update article set title = '${title}',description = '${description}',imageUrl = '${imageUrl}',article = '${article}',categories = ${categories} where article_id = ${article_id};
+  `
+  db(sql)
+    .then(result => {
+      res.send({
+        message: 'success'
+      })
+    })
+    .catch(err => {
+      res.send({
+        message: '修改文章失败'
+      })
+    })
+})
 
 module.exports = router
