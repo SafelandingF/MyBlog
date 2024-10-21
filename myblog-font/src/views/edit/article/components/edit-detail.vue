@@ -11,7 +11,7 @@
       mode="default"
     />
     <Editor
-      style="height: 500px; overflow-y: hidden;"
+      style="height: 300px; overflow-y: hidden;"
       v-model="valueHtml"
       :defaultConfig="editorConfig"
       :mode="mode"
@@ -20,6 +20,8 @@
     </div> 
     <button @click="editArticle">获取实例</button>
     <div class="test" v-html="valueHtml"></div>
+
+
     <div class="raw">{{valueHtml}}</div>
 </div>
 </template>
@@ -50,7 +52,7 @@ import service from '@/utils/service'
         'through',
         '|',
         'codeBlock',
-        'codeSelectLang',
+        // 'codeSelectLang',
         'code',
         "blockquote",
         'sub',
@@ -60,6 +62,8 @@ import service from '@/utils/service'
         "justifyCenter",
         "|",
         "insertImage",
+        "insertLink",
+        "uploadImage",
         "emotion",
         "todo",
         "|",
@@ -145,10 +149,11 @@ import service from '@/utils/service'
   border: 1px solid #ccc;
 
 
+
   /*
-  * TODO: 修改引用样式 
-  * TODO: 修改todo样式 
+  * TODO: 修改todo样式 不太会改
   */
+
 
   // 下面的代码很合适了
   font-family: ChillRound;
@@ -176,6 +181,33 @@ import service from '@/utils/service'
     width: auto;
     height: auto;
   }
+  :deep(blockquote){
+    font-style: italic;
+    width: 90%;
+    display: block;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    border-left: 15px solid #b4d5ff;
+    background-color: #f5f2f0;
+  }
+  :deep(input){
+    vertical-align: middle;
+    margin-top: 1px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+  }
+  :deep(a){
+    font-style: italic;
+    text-decoration: none;
+    stroke: none;
+    color: #4183c4;
+    padding: 0;
+  }
+
+  
 
 }
 
