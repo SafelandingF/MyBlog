@@ -30,11 +30,12 @@
 //! TODO:这里展示的时候可以使用readonly
 //这里使用lang="ts"会报错
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
-import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
+import { onBeforeUnmount, ref, shallowRef, onMounted, onBeforeMount } from 'vue'
 //@ts-ignore
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { useRoute } from 'vue-router';
 import service from '@/utils/service'
+
   
 // 编辑器实例，必须用 shallowRef 可以通过 .value 获取实例然后调用api
     const editorRef = shallowRef()
@@ -71,10 +72,53 @@ import service from '@/utils/service'
         "redo",
       ]
     }
-    const editorConfig = { placeholder: '请输入内容...' }
-    // 模拟 ajax 异步获取内容
+    let editorConfig ={
+      MENU_CONF:{
+        uploadImage: {
+          fieldName: 'file-test',
+          maxFileSize: 2 * 1024 * 1024, // 2M
+          allowedFileTypes: ['image/*'],
+          withCredentials: true,
+          timeout: 5 * 1000,// 5s
+          async customUpload(file,insertFn){
+            console.log(file)
+            service.post('/upload/upload-image',{
+              file:file
+            },{
+              headers:{
+                'Content-Type': 'multipart/form-data,boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+                'Host': 'localhost:3000',
+                'Accept': 'application/json, text/plain, */*',
+                'Connection': 'keep-alive',
+                'Content-Length': file.size,
+              }
+            })
+            .then(res => {
+              console.log(res)
+              insertFn(res.data.url,res.data.alt,res.data.href)
+            })
+            .catch(err => console.log(err))
+          },
+          onBeforeUpload(file){
+            console.log('before', file)
+            return file
+          },
+          onProgress(progress){
+            console.log('progress', progress)
+          },
+          onSuccess(file,res){
+            console.log(`${file.name}`,res)
+          },
+          onFailed(file,res){
+            console.log(`${file.name} 上传失败`,res)      
+        }
+      }
+    }
+    }
+    onBeforeMount(()=>{
+    
+    })
     onMounted(() => {
-      
       getArticleDetail()
       setTimeout(()=>{
         console.log(editorRef.value.getAllMenuKeys())
@@ -153,8 +197,6 @@ import service from '@/utils/service'
   /*
   * TODO: 修改todo样式 不太会改
   */
-
-
   // 下面的代码很合适了
   font-family: ChillRound;
   letter-spacing: 1px;

@@ -12,17 +12,14 @@ const message = require('./routes/message')
 const user = require('./routes/user')
 const article = require('./routes/article.js')
 const note = require('./routes/note.js')
-
+const uploadImage = require('./routes/upload.js')
 const app = express();
-
 //这里是文件传输
-const upload = multer({
-  dest: './public/upload'
-})
-app.use(upload.any())
+// const upload = multer({
+//   dest: '/public/upload'
+// })
+// app.use(upload.any())
 app.use(express.static('./public'))
-
-
 //设置token拦截
 app.use(jwt({
   secret: jwtConfig.jwtSecretKey,
@@ -32,6 +29,7 @@ app.use(jwt({
     '/login',
     '/register',
     '/login/password',
+    '/upload/upload-image'
   ]
 })
 )
@@ -55,11 +53,17 @@ app.use((req, res, next) => {
   next()
 })
 
+
+
+
+
 app.use('/login', login)
 app.use('/message', message)
 app.use('/user', user)
 app.use('/article', article)
 app.use('/note', note)
+app.use('/upload', uploadImage)
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
