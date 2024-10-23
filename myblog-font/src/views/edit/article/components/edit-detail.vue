@@ -1,6 +1,11 @@
 <template>
   <div class="editor-container" >
-    
+    <div class="info-container">
+      <input class="title" type="text" v-model="title" placeholder="请输入标题">
+      <input class="description" type="text" v-model="description" placeholder="请输入描述">
+      <input class="image" type="text" v-model="imageUrl" placeholder="请输入图片地址">
+    </div>
+
     <div 
     class="article-editor"
     style="border: 1px solid #ccc">
@@ -19,11 +24,9 @@
     />
     </div> 
     <button @click="editArticle">获取实例</button>
-    <div class="test" v-html="valueHtml"></div>
-
-
+    <div class="preview" v-html="valueHtml"></div>
     <div class="raw">{{valueHtml}}</div>
-</div>
+  </div>
 </template>
 
 <script setup >
@@ -35,14 +38,20 @@ import { onBeforeUnmount, ref, shallowRef, onMounted, onBeforeMount } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { useRoute } from 'vue-router';
 import service from '@/utils/service'
-
-  
 // 编辑器实例，必须用 shallowRef 可以通过 .value 获取实例然后调用api
+  
+    const title = ref('')
+    const description = ref('')
+    const imageUrl = ref('')
+    const categories = ref(0)
+    const valueHtml = ref('<p>hello</p>') 
+
+
     const editorRef = shallowRef()
     const route = useRoute()
     const id = route.params.id
     // 内容 HTML
-    const valueHtml = ref('<p>hello</p>') 
+    
     const toolbarConfig = {
       toolbarKeys:[ 
         'color',
@@ -138,6 +147,10 @@ import service from '@/utils/service'
       service.get('/article/getarticledetail?article_id=' + id,)
         .then(res => {
           valueHtml.value = res.data[0].article
+          title.value = res.data[0].title
+          description.value = res.data[0].description
+          imageUrl.value = res.data[0].imageUrl
+          console.log(res)
         })
         .catch(err => {
           console.log(err)
@@ -148,11 +161,11 @@ import service from '@/utils/service'
       console.log(id)
       service.post('/article/editarticle', {
         article_id: id,
-        title: '测试标题',
-        description:'测试描述',
-        imageUrl:'测试图片',
+        title: title.value,
+        description:description.value,
+        imageUrl:imageUrl.value,
         article: editorRef.value.getHtml(),
-        categories: 0,
+        categories: categories.value,
       })
         .then(res => {
           console.log(res)
@@ -176,6 +189,38 @@ import service from '@/utils/service'
     height: 300px;
     background-color: #6d6c6c
   }
+  .info-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: 
+      'title description'
+      'image description';
+    ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    .title {
+      grid-area: title;
+      margin: 10px;
+    }
+    .description {
+      grid-area: description;
+      margin: 10px;
+    }
+    .image {
+      grid-area: image;
+      margin: 10px;
+    }
+  }
+
+
+
+
+  .editor {
+    height: 100%;
+    width: 100%;
+
+  }
+
 }
 
 
@@ -187,13 +232,12 @@ import service from '@/utils/service'
 
 // NOTE: 这里需要样式穿透
 // ：deep影响到子组件
-.test{
+.preview{
   width: 100%;
-  height: 100px;
+  height: 300px;
   border: 1px solid #ccc;
-
-
-
+  overflow-y: scroll;
+  overflow-x: hidden;
   /*
   * TODO: 修改todo样式 不太会改
   */
@@ -219,6 +263,7 @@ import service from '@/utils/service'
     border-radius: 100%;
   }
   :deep(pre code){
+    font-family: Mono;
     display: block;
     width: auto;
     height: auto;

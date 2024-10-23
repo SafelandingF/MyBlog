@@ -81,6 +81,51 @@ router.get('/getcomment', (req, res) => {
   })
 })
 
+router.post('/addcomment', (req, res) => {
+  const { comment, messageId } = req.body
+  const sql = `
+  insert into comment (message_id,comment) 
+  values (${messageId},'${comment}')
+  `
+  db(sql, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.send({
+        status: 500,
+        message: '评论失败',
+      })
+    }
+    else {
+      res.send({
+        status: 200,
+        message: '评论成功',
+      })
+    }
+  })
+})
+
+router.post('/like', (req, res) => {
+  const { messageId, like, dislike } = req.body
+  const sql = `
+  update message set \`like\` = ${like},dislike = ${dislike} where message_id = ${messageId}
+  `
+  db(sql, (err, result) => {
+    if (err) {
+      res.send({
+        status: 500,
+        message: '点赞失败',
+        data: err
+      })
+    } else {
+      res.send({
+        status: 200,
+        message: '点赞成功',
+        like: like,
+        dislike: dislike,
+      })
+    }
+  })
+})
 
 
 

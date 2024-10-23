@@ -1,6 +1,6 @@
 <template>
   <div class="essay-board-container">
-    <edit-button v-show="userinfo.authorization" @click=""></edit-button>
+    <edit-button v-show="userinfo.authorization" @click="goToEdit"></edit-button>
     <div class="essay-board">
       <cardAcrticle 
       v-for="(item,index) in essay" 
@@ -22,6 +22,8 @@
   import service from '@/utils/service';
   import { reactive, ref , onMounted } from 'vue';
   import { get } from 'node_modules/axios/index.cjs';
+  import { useRouter } from 'vue-router';
+import router from '@/router';
   interface Essay{
     article_id:number,
     imageUrl:string,
@@ -42,8 +44,9 @@
     })
     .catch(err => console.log(err))
   }
-
-
+  const goToEdit = () =>{
+    router.push('/edit-article')
+  }
   onMounted(()=>{
     getEssay()
   })

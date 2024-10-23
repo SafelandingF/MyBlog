@@ -1,6 +1,6 @@
 <template>
   <div class="note-board-container">
-    <edit-button v-show="userinfo.authorization"></edit-button>
+    <edit-button v-show="userinfo.authorization" @click="goToEdit"></edit-button>
     <div class="note-welcome">
       <h1>有用的笔记！！！</h1>
     </div>
@@ -22,6 +22,8 @@ import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';
 import service from '@/utils/service';
 import { ref,onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import router from '@/router';
 
 
 interface Note {
@@ -33,8 +35,6 @@ interface Note {
 const  userInfoStore = useUserinfoStore()
 const { userinfo } = storeToRefs(userInfoStore)
 const noteInfo = ref<Note[]>([])
-
-
 const getNote = () =>{
   service.get('/note/getnote')
   .then(res =>{
@@ -44,6 +44,10 @@ const getNote = () =>{
     console.log('123')
   })
 }
+const goToEdit =() =>{
+  router.push('/edit-note')
+}
+
 
 onMounted(()=>{
   getNote()

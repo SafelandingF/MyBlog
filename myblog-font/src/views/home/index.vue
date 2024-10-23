@@ -1,13 +1,11 @@
 <template>
   <div class="bgc-container">
-    <div class="nav-container">
-      1232312313213123
-    </div>
+    <navBar></navBar>
     <welcome></welcome>
     <youShouldKnow></youShouldKnow>
     <myProfile></myProfile>
-    <messageBroad></messageBroad>
-    <photoShow></photoShow>
+    <messageBroad id="message"></messageBroad>
+    <photoShow id="photo"></photoShow>
     
     <!-- TODO: 这里想要的效果是点击相机 然后相机放大 然后展示 照片集 -->
   <div class="remain"> 
@@ -15,11 +13,11 @@
   </div>
 
     <!-- TODO: 这里还要进行数据交互和每一个board的绑定-->
-  <essayBoard></essayBoard>
+  <essayBoard id="essay"></essayBoard>
   <div class="remain">
     间接性自恋加社恐
   </div>
-  <noteBoard></noteBoard>
+  <noteBoard id="note"></noteBoard>
 
 </div>
 </template>
@@ -29,7 +27,7 @@
 // TODO: 如果没有的话 检验一下是否登录过 如果登录过的话 就去请求一下数据
 // TODO: 如果没有登录过的话 就跳转到登录页面
 
-import {onBeforeMount, onMounted} from 'vue'
+import {onBeforeMount, onMounted,ref} from 'vue'
 import service from '@/utils/service';
 import useUserinfoStore from '@/stores/userInfo';
 import type { UserInfo } from '@/interface/user';
@@ -45,6 +43,17 @@ import messageBroad from './components/message-broad.vue';
 import photoShow from './components/photo-show.vue';
 import essayBoard from './components/essay-board.vue';
 import noteBoard from './components/note-board.vue';
+import navBar from './components/nav-bar.vue';
+
+import getScroll from '@/utils/windows';
+
+const top = ref<number>(0)
+const left = ref<number>(0)
+
+const useScroll =( ) =>{
+  top.value = getScroll().top
+  console.log(top.value)
+}
 
 //设置平滑滚动
 const lenis = new Lenis({
@@ -86,15 +95,6 @@ onBeforeMount(()=>{
 
 
 <style scoped lang="scss">
-
-.nav-container{
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  visibility: hidden;
-}
 
 .remain{
   height: 100vh;
