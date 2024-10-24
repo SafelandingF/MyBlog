@@ -101,10 +101,11 @@ onMounted(() => {
     y:-200,
     scale:2,
     scrollTrigger:{ 
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=300',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
+      markers:true
     }
   })
 
@@ -114,9 +115,9 @@ onMounted(() => {
     y:-550,
     scale:2,
     scrollTrigger:{
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=315',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
       markers: true,
     }
@@ -128,9 +129,9 @@ onMounted(() => {
     y:-900,
     scale:2,
     scrollTrigger:{
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=315',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
       markers: true,
     }
@@ -143,9 +144,9 @@ onMounted(() => {
     y:-800,
     scale:2,
     scrollTrigger:{
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=315',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
       markers: true,
     }
@@ -157,9 +158,9 @@ onMounted(() => {
     y:-700,
     scale:2,
     scrollTrigger:{
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=315',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
       markers: true,
     }
@@ -170,9 +171,9 @@ onMounted(() => {
     y:-600,
     scale:2,
     scrollTrigger:{
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=315',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
       markers: true,
     }
@@ -184,9 +185,9 @@ onMounted(() => {
     y:-500,
     scale:2,
     scrollTrigger:{
-      trigger:'.welcome-title1',
-      start:'-=300',
-      end: '+=315',
+      trigger:'.welcome-title0',
+      start:'+=100',
+      end: '+=100',
       scrub:2,
       markers: true,
     }
@@ -203,6 +204,7 @@ onMounted(() => {
 // FIXME: 涉及到具体大小的东西不要用响应式啊 会崩溃的
 
 .welcome-container{ 
+  
   position: relative;
   height: 200vh;
   width: 100%;
@@ -213,7 +215,10 @@ onMounted(() => {
   flex-direction: column;
   vertical-align: middle;
   padding: 0;
+  padding-top:100px;
+  padding-bottom: -900px;
   margin: 0;
+  
   .welcome-title0{
     font-family: yutong-font;
     text-align: center;

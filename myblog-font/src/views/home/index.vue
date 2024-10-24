@@ -6,17 +6,14 @@
     <myProfile></myProfile>
     <messageBroad id="message"></messageBroad>
     <photoShow id="photo"></photoShow>
-    
-    <!-- TODO: 这里想要的效果是点击相机 然后相机放大 然后展示 照片集 -->
-  <div class="remain"> 
-    喜欢拍一些照片
-  </div>
-
+    <!--  
+     TODO: 这里想要的效果是点击相机 然后相机放大 然后展示 照片集 
+    <div class="remain"> 
+      喜欢拍一些照片
+    </div>
+  -->
     <!-- TODO: 这里还要进行数据交互和每一个board的绑定-->
   <essayBoard id="essay"></essayBoard>
-  <div class="remain">
-    间接性自恋加社恐
-  </div>
   <noteBoard id="note"></noteBoard>
 
 </div>

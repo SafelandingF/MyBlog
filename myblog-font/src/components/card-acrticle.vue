@@ -4,11 +4,15 @@
   <div class="essay-container" @click="goToEassay">
     <span class="essay-icon">{{props.iconNumber}}</span>
     <div class="essay-image-container">
-      <div class="essay-image"></div>
+      <div class="essay-image">
+        <img src="../assets/imgs/self-portrait.jpg" alt="">
+      </div>
     </div>
     <div class="essay-preview-container">
-      <!-- 还是不用插槽比较好 这里不需要控制文本 -->
-       <div class="essay-preview" >{{props.preview}}</div>    
+       <div class="essay-preview" > 
+        <h2>{{props.title}}</h2>
+        <p>{{props.preview}}</p>
+       </div>    
     </div>
   </div>
 </template>
@@ -52,6 +56,7 @@ onMounted(()=>{
 </script>
 <style scoped lang="scss">
 .essay-container{ 
+  cursor: pointer;
   width: 36vw;
   height: 30vh;
   min-width: 500px;
@@ -63,6 +68,10 @@ onMounted(()=>{
   background-color: #fffdfb;
   opacity: 0.1;
   flex-wrap: nowrap;
+  &:hover{
+    transform: scale(1.05) translateY(-10px);
+    transition: all 0.3s ease;
+  }
   .essay-icon{
     position: absolute;
     top: -12px; 
@@ -90,14 +99,23 @@ onMounted(()=>{
     align-items: center;
     justify-content: center;
     .essay-image{
+      position: relative;
       width: 70%;
       height: 70%;
       background-color: #fff;
       border-radius: 25px;
+      img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        max-width: 100%;
+        height: auto;
+      }
     }
-
   }
   .essay-preview-container{
+    font-family: ChillRound;
     border-top-right-radius: 22px;
     border-bottom-right-radius: 22px;
     width: 60%;
@@ -113,6 +131,13 @@ onMounted(()=>{
       border-radius: 25px;
       font-family: yutong-font;
       padding: 20px;
+      p{
+        font-family: ChillRound;
+      }
+      h2{
+        font-family: ChillRound;  
+        text-align: center;
+      }
     }
   }
 }

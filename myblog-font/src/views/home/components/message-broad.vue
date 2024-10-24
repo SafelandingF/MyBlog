@@ -16,7 +16,6 @@
         :like="item.like"
         :dislike="item.dislike"
         @uplodad:message_id="uplodadMessageId"
-        
         ></card-welcome>
       </div>
       

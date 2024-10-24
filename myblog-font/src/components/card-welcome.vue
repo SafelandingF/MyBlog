@@ -6,14 +6,14 @@
     </div>
     <div class="card-inner">{{ message }}</div>
     <slot></slot>
-    <div class="card-icon"> 
+    <div class="card-icon" > 
       <div class="like" @click="clickLike">
        <svg t="1729606177744" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8376" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"><path d="M503.466667 384L469.333333 298.666667H384v426.666666h384V384h-264.533333zM298.666667 298.666667V213.333333h256l25.6 85.333334H853.333333v512H298.666667V298.666667zM170.666667 298.666667h85.333333v512H170.666667V298.666667z" fill="#444444" p-id="8377"></path></svg>
-        <span class="like-num .like-active" >{{like}}</span>
+        <span class="like-num .like-active" v-show="like">{{like}}</span>
       </div>
       <div class="dislike"  @click="clickDislike">
         <svg t="1729606188653" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8624" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"><path d="M494.933333 640l-25.6 85.333333H384V298.666667h384v341.333333h-273.066667zM298.666667 725.333333v85.333334h256l25.6-85.333334H853.333333V213.333333H298.666667v512z m-128 0h85.333333V213.333333H170.666667v512z" fill="#444444" p-id="8625"></path></svg>
-        <span class="like-num .like-active">{{dislike}}</span>
+        <span class="like-num .like-active" v-show="like">{{dislike}}</span>
       </div>
     </div>
   </div>
@@ -41,7 +41,9 @@ const uplodad =()=>{
 
 const likeActive = ref<boolean>(false)
 const dislikeActive = ref<boolean>(false)
-// 这里直接解构会有问题 我还不懂为什么 以后在解决
+// FIXME: 这里直接解构会有问题 我还不懂为什么 以后在解决
+// FIXME: 这里不使用响应式会导致card-full出问题
+
 const like = ref<number>(props.like)
 const dislike = ref<number>(props.dislike)
 
@@ -85,8 +87,6 @@ const clickDislike = ()=>{
 
 <style scoped lang="scss">
 
-// TODO: 如果
-
 .card {
   cursor: pointer;
   width: 100%;
@@ -121,8 +121,9 @@ const clickDislike = ()=>{
     display: flex;
     align-content: center;
     margin-top: 5px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     cursor: pointer;
+    min-height: 20px;
     .like{
       width: 50%;
       display: flex;
