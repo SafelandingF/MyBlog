@@ -105,7 +105,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers:true
+       
     }
   })
 
@@ -119,7 +119,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers: true,
+      
     }
   })
 
@@ -133,7 +133,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers: true,
+      
     }
   })
 
@@ -148,7 +148,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers: true,
+      
     }
   })
 
@@ -162,7 +162,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers: true,
+      
     }
   })
   gsap.fromTo('.welcome-title6',{
@@ -175,7 +175,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers: true,
+      
     }
   })
 
@@ -189,7 +189,7 @@ onMounted(() => {
       start:'+=100',
       end: '+=100',
       scrub:2,
-      markers: true,
+      
     }
   })
 

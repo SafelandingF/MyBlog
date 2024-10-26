@@ -3,18 +3,19 @@
     <navBar></navBar>
     <welcome></welcome>
     <youShouldKnow></youShouldKnow>
-    <myProfile></myProfile>
-    <messageBroad id="message"></messageBroad>
+    <myProfile></myProfile>、
     <photoShow id="photo"></photoShow>
+    <messageBroad id="message"></messageBroad>
+    
     <!--  
-     TODO: 这里想要的效果是点击相机 然后相机放大 然后展示 照片集 
+     TODO: 这里想要的效果是点击相机 然后相机放大 然后展示 照片集  //TODO: 这个想法有点问题 暂时先不做了
     <div class="remain"> 
       喜欢拍一些照片
     </div>
   -->
     <!-- TODO: 这里还要进行数据交互和每一个board的绑定-->
-  <essayBoard id="essay"></essayBoard>
-  <noteBoard id="note"></noteBoard>
+    <essayBoard id="essay"></essayBoard>
+    <noteBoard id="note"></noteBoard>
 
 </div>
 </template>

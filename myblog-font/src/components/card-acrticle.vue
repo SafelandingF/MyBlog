@@ -133,10 +133,12 @@ onMounted(()=>{
       padding: 20px;
       p{
         font-family: ChillRound;
+        line-height: 1.5em;
       }
       h2{
         font-family: ChillRound;  
         text-align: center;
+        margin:0;
       }
     }
   }

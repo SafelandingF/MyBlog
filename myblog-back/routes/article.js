@@ -42,7 +42,8 @@ router.get('/getarticledetail', (req, res) => {
 })
 router.post('/addarticle', (req, res) => {
   const { title, description, imageUrl, article, categories } = req.body
-  const sql = `insert into article ( article,imageUrl,title,description,categories) values ('${article}','${imageUrl}','${title}','${description}',${categories});
+  const Tarticle = note.replace(/'/g, "\\'").replace(/"/g, '\\"')
+  const sql = `insert into article ( article,imageUrl,title,description,categories) values ('${Tarticle}','${imageUrl}','${title}','${description}',${categories});
   `
   db(sql)
     .then(result => {
@@ -74,7 +75,8 @@ router.delete('/deletearticle', (req, res) => {
 })
 router.post('/editarticle', (req, res) => {
   const { article_id, title, description, imageUrl, article, categories } = req.body
-  const sql = `update article set title = '${title}',description = '${description}',imageUrl = '${imageUrl}',article = '${article}',categories = ${categories} where article_id = ${article_id};
+  const Tarticle = note.replace(/'/g, "\\'").replace(/"/g, '\\"')
+  const sql = `update article set title = '${title}',description = '${description}',imageUrl = '${imageUrl}',article = '${Tarticle}',categories = ${categories} where article_id = ${article_id};
   `
   db(sql)
     .then(result => {

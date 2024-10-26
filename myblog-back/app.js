@@ -56,7 +56,8 @@ app.use((req, res, next) => {
 
 
 
-
+// TODO: 对于内容未进行转义 应当对所有的字符串进行转义 再提交 
+// 不然会报错errno1064
 app.use('/login', login)
 app.use('/message', message)
 app.use('/user', user)

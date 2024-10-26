@@ -47,23 +47,7 @@ router.get('/getnotedetail', (req, res) => {
     )
 })
 
-router.post('/addnote', (req, res) => {
-  const { title, description, note } = req.body
-  const sql = `
-  insert into note (title,note,description) values ('${title}','${description}','${note}')
-  `
-  db(sql)
-    .then(data => {
-      res.send({
-        message: 'success',
-      })
-    })
-    .catch(err => {
-      res.send({
-        message: 'fail',
-      })
-    })
-})
+
 
 router.post('/addtag', (req, res) => {
   const { tag, note_id } = req.body
@@ -82,5 +66,68 @@ router.post('/addtag', (req, res) => {
       })
     })
 })
+
+
+
+router.post('/addnote', (req, res) => {
+  const { title, description, note } = req.body
+  const Tnote = note.replace(/'/g, "\\'").replace(/"/g, '\\"')
+  const sql = `
+  insert into note (title,note,description) values ('${title}','${description}','${Tnote}')
+  `
+  db(sql)
+    .then(data => {
+      res.send({
+        message: 'success',
+      })
+    })
+    .catch(err => {
+      res.send({
+        message: 'fail',
+      })
+    })
+})
+
+router.post('/editnote', (req, res) => {
+  const { title, description, note, note_id } = req.body
+  const Tnote = note.replace(/'/g, "\\'").replace(/"/g, '\\"')
+  const sql = `
+    update note set title = '${title}',note = "${Tnote}",description = '${description}' where note_id = ${note_id}
+  `
+  db(sql)
+    .then(data => {
+      res.send({
+        message: 'success',
+      })
+    })
+    .catch(err => {
+      res.send({
+        message: 'fail',
+      })
+    })
+})
+
+router.get('/getnotetag', (req, res) => {
+  const { note_id } = req.query
+  const sql =
+    `
+    select tag from tags where note_id = ${note_id}
+    `
+
+  db(sql)
+    .then(result => {
+      res.send({
+        message: '查询成功',
+        data: result
+      })
+    })
+    .catch(err => {
+      res.send({
+        message: '查询失败',
+        err: err
+      })
+    })
+})
+
 
 module.exports = router

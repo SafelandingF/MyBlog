@@ -213,6 +213,7 @@ const submitComment = () =>{
   display: flex;
   align-content: center;
   justify-content: center;
+  margin-bottom: 400px;
 }
 .message-text{
   width: 100%;
@@ -233,6 +234,7 @@ const submitComment = () =>{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
   .card-container {
     width: 65%;
     display: grid;

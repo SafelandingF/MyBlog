@@ -1,6 +1,8 @@
 const mysql = require('mysql2')
 const config = require('../config').db
 
+
+
 // 这里是先建立链接 再进行后续的处理
 const pool = mysql.createPool(config)
 exports.db = (sql, sqlParams) => {

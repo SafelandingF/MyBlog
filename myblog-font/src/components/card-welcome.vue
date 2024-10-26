@@ -90,7 +90,7 @@ const clickDislike = ()=>{
 .card {
   cursor: pointer;
   width: 100%;
-  background-color: #b5a4a4;
+  background-color: #707070;
   border-radius: 5px;
   .top-bar{
     font-family: ChillRound;
@@ -98,7 +98,7 @@ const clickDislike = ()=>{
     padding-bottom: 10px;
     width: 100%;
     height: 30px;
-    background-color: #4d4343;
+    background-color: #5b0601;
     display: flex;
     font-size: 30px;
     gap: 10px;
