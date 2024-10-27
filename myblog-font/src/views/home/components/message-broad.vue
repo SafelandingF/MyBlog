@@ -31,7 +31,7 @@
         >
         <!-- SLOT 插槽部分--> 
         <div class="message-comment" 
-        v-for="item in comment.slice(0,3)" :key="item.comment">
+        v-for="item in comment.slice(comment.length-4,comment.length).reverse()" :key="item.comment">
           <div class="comment"> {{item.comment}}</div>
         </div>    
         <div class="upComment" >
@@ -210,6 +210,7 @@ const submitComment = () =>{
 </script>
 <style scoped lang="scss">  
 .message-input {
+  margin-top: 30px;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -260,8 +261,9 @@ const submitComment = () =>{
         margin: 0 auto;
         margin-top: 10px;
         width: 90%;
-        background-color: azure;
-        border-radius: 5px;
+        background-color: #fefefe;
+        border-left: 2px solid #6f6e6d;
+        border-right: 2px solid #6f6e6d;
         padding-top: 10px;
         padding-bottom: 10px;
         // FIXME: 忘记设计用户字段了 悲

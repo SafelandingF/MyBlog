@@ -5,7 +5,7 @@
     <span class="essay-icon">{{props.iconNumber}}</span>
     <div class="essay-image-container">
       <div class="essay-image">
-        <img src="../assets/imgs/self-portrait.jpg" alt="">
+        <img src="@/assets/imgs/link.png" alt="">
       </div>
     </div>
     <div class="essay-preview-container">
@@ -56,6 +56,7 @@ onMounted(()=>{
 </script>
 <style scoped lang="scss">
 .essay-container{ 
+  border: 2px solid #114038;
   cursor: pointer;
   width: 36vw;
   height: 30vh;
@@ -64,7 +65,6 @@ onMounted(()=>{
   position: relative;
   display: flex;
   border-radius: 25px;
-  border:2px black solid;
   background-color: #fffdfb;
   opacity: 0.1;
   flex-wrap: nowrap;
@@ -88,29 +88,29 @@ onMounted(()=>{
     background-color: black;
   }
   .essay-image-container{
+   
     margin: 0;
     padding: 0;
     border-top-left-radius: 22px;
     border-bottom-left-radius: 22px;
     width: 40%;
     height: 100%;
-    background-color: #252323;
+    background-color: #fffdfb;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-right: 2px solid #114038;
     .essay-image{
       position: relative;
       width: 70%;
       height: 70%;
-      background-color: #fff;
       border-radius: 25px;
       img{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        max-width: 100%;
-        height: auto;
+        background-color: #1d4440;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px; 
+        object-fit: contain;
       }
     }
   }
@@ -120,7 +120,7 @@ onMounted(()=>{
     border-bottom-right-radius: 22px;
     width: 60%;
     height: 100%;
-    background-color: #332b2b;
+    background-color: #fffdfb;
     display: flex;
     align-items: center;
     justify-content: center;

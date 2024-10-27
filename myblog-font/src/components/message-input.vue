@@ -56,6 +56,7 @@ const userinfoStore = useUserinfoStore()
 
 const submit = () =>{
   console.log(message.value);
+  if(message.value.length === 0) return
   if(userinfoStore.userinfo.id){
     service.post('/message/addmessage',{
      message:message.value,
@@ -79,6 +80,7 @@ const submit = () =>{
 <style scoped lang="scss">
 
 .input-wrapper {
+  border: 2px solid #6f6e6d;
   .active{
     scale: 1.5;
   }
@@ -89,7 +91,7 @@ const submit = () =>{
   box-sizing: content-box;
   display: flex;
   align-items: center;
-  background-color: #8f8f8f;
+  background-color: #f6f3ec;
 }
 
 .icon {
@@ -104,10 +106,11 @@ const submit = () =>{
   border: none;
   outline: none;
   padding-left: 15px;
-  background-color: #8f8f8f;
-  color: white;
+  background-color: #f6f3ec;
+  color: black;
   font-size: 1em;
   border-radius: 5px;
+  
 }
 .input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #292524 inset;
