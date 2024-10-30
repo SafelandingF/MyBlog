@@ -36,7 +36,7 @@ defineExpose({
   height: 60px;
   padding: 12px;
   font-size: 18px;
-  font-family: zhuoti-font;
+  font-family: yutong-font;
   color: #000;
   background-color: #fff;
   border: 4px solid #000;
@@ -101,7 +101,7 @@ defineExpose({
   height: 60px;
   padding: 12px;
   font-size: 18px;
-  font-family: "Courier New", monospace;
+  font-family: Mono;
   color: #000;
   background-color: #fff;
   border: 4px solid #000;

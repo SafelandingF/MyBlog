@@ -204,13 +204,10 @@ const submitComment = () =>{
   }
   )
 }
-
-
-
 </script>
 <style scoped lang="scss">  
 .message-input {
-  margin-top: 30px;
+  margin-top: 70px;
   display: flex;
   align-content: center;
   justify-content: center;

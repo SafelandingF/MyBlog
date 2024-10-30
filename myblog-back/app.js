@@ -19,6 +19,7 @@ const app = express();
 //   dest: '/public/upload'
 // })
 // app.use(upload.any())
+app.use(cors())
 app.use(express.static('./public'))
 //设置token拦截
 app.use(jwt({
@@ -27,6 +28,8 @@ app.use(jwt({
 }).unless({
   path: [
     '/login',
+    '/home',
+    '/vistor',
     '/register',
     '/login/password',
     '/upload/upload-image'
@@ -34,8 +37,6 @@ app.use(jwt({
 })
 )
 
-
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

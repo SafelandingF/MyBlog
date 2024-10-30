@@ -41,7 +41,6 @@
 import service from '@/utils/service';
 import useUserinfoStore from '@/stores/userInfo';
 import { ref } from 'vue';
-import { errorMessages } from 'vue/compiler-sfc';
 
 const props = defineProps({
   text:{

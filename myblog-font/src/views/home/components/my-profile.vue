@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+
 import { onMounted } from 'vue';
 onMounted(()=>{
   //#region
@@ -267,8 +267,9 @@ onMounted(()=>{
   align-items: center;
   justify-items: center;
   .icon-name{
-    font-size: 200px;
-    font-family: zhuoti-font;
+    font-style: italic;
+    font-size: 100px;
+    font-family: yutong-font;
   }
 }
 </style>

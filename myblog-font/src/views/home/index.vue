@@ -28,7 +28,6 @@
 import {onBeforeMount, onMounted,ref} from 'vue'
 import service from '@/utils/service';
 import useUserinfoStore from '@/stores/userInfo';
-import type { UserInfo } from '@/interface/user';
 //设置动画
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';

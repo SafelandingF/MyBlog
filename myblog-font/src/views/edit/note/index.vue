@@ -14,12 +14,12 @@
 
 <script setup lang="ts">
 import note from '@/components/note.vue';
-import editButton from '@/components/edit-button.vue';
+
 import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';
 import service from '@/utils/service';
 import { ref,onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+
 import router from '@/router';
 
 

@@ -71,7 +71,7 @@ onMounted(()=>{
    position: relative;
    justify-content: space-evenly;
    .note-welcome {
-    font-family: zhuoti-font;
+    font-family: yutong-font;
      position: absolute;
      top: -100px;
      left: 50%;

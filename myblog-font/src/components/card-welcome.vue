@@ -94,7 +94,7 @@ const clickDislike = ()=>{
   opacity: 0.9;
   .top-bar{
     color: 232139;
-    font-family: zhuoti-font;
+    font-family: yutong-font;
     padding-top: 10px;
     padding-left: 5px;
     padding-bottom: 10px;
@@ -105,6 +105,9 @@ const clickDislike = ()=>{
     font-size: 30px;
     gap: 10px;
     border-top: 2px solid #6f6e6d;
+    .card-account{
+      transform: translateY(25%);
+    }
   }
   .card-inner{
     border: 2px solid #6f6e6d;  

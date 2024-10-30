@@ -34,8 +34,6 @@
   import { storeToRefs } from 'pinia';
   import service from '@/utils/service';
   import { reactive, ref , onMounted ,computed} from 'vue';
-  import { get } from 'node_modules/axios/index.cjs';
-  import { useRouter } from 'vue-router';
 import router from '@/router';
   interface Essay{
     article_id:number,

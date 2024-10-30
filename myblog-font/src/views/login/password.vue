@@ -105,7 +105,7 @@
   background-image: url('@/assets/imgs/noise.webp');
   animation: movebackground 10s steps(10,end) infinite;
   .text {
-    font-family: zhuanshu-font;
+    font-family: yutong-font;
       font-size: 80px;
       width: 60vh;
       height: 50vh;

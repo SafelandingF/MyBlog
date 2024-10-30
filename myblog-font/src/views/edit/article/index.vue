@@ -17,7 +17,6 @@
   import { storeToRefs } from 'pinia';
   import service from '@/utils/service';
   import { reactive, ref , onMounted } from 'vue';
-  import { get } from 'node_modules/axios/index.cjs';
   interface Essay{
     article_id:number,
     imageUrl:string,
