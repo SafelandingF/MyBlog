@@ -29,7 +29,7 @@
 import service from '@/utils/service';
 import { onMounted,reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import noteTag from '@/components/note-tag.vue';
+import noteTag from '@/components/noteTag.vue';
 interface resNoteDetail {
   note_id:number,
   note:string,
@@ -207,8 +207,9 @@ onMounted(() => {
   }
 
   .content-container{
+    font-family: CHillRound;
     border: 2px black solid;
-    height: 100vh;
+    height: auto;
     font-size: 20px;
     line-height: 1.5em;
     padding: 20px;
@@ -216,6 +217,7 @@ onMounted(() => {
     background-color: #f9f9f961;
     width: 60%;
     :deep(code) {
+      font-family: Mono;
       margin-left: 5px;
       margin-right: 5px;
       width: auto;

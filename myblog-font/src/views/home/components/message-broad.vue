@@ -77,11 +77,11 @@
 </template>
 
 <script setup lang="ts">
-import messageInput from '@/components/message-input.vue';
-import cardWelcome from '@/components/card-welcome.vue';
+import messageInput from '@/components/messageInput.vue';
+import cardWelcome from '@/components/cardMessage.vue';
 import Typed from 'typed.js';
 import { onMounted,toRef,watch,ref, onBeforeMount, reactive, computed } from 'vue';
-import editButton from '@/components/edit-button.vue';
+import editButton from '@/components/editButton.vue';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';

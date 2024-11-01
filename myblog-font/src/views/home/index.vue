@@ -33,7 +33,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Lenis from 'lenis';
 //用到的组件
-import welcome from './components/welcome.vue';
+import welcome from './components/welcome-board.vue';
 import youShouldKnow from './components/you-should-know.vue';
 import myProfile from './components/my-profile.vue';
 import messageBroad from './components/message-broad.vue';

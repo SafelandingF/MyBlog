@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import note from '@/components/note.vue';
-import editButton from '@/components/edit-button.vue';
+import editButton from '@/components/editButton.vue';
 import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';
 import service from '@/utils/service';

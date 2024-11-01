@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import noteTag from './note-tag.vue';
+import noteTag from './noteTag.vue';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const props = defineProps<{

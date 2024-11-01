@@ -6,6 +6,7 @@ const multer = require('multer')
 const { expressjwt: jwt } = require('express-jwt')
 const { port } = require('./config.js').server
 const jwtConfig = require('./jwt/config.js')
+const history = require('connect-history-api-fallback')
 //! 设置路由托管
 const login = require('./routes/login')
 const message = require('./routes/message')
@@ -36,13 +37,10 @@ app.use(jwt({
   ]
 })
 )
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-
-
-
+// 解决vue 路由在history模式下刷新404问题 本质是重定向到/dist/index.html文件
+app.use(history())
 //拦截错误 其实还没有用到过
 app.use((req, res, next) => {
   res.cc = (err, status = 1) => {
@@ -53,10 +51,6 @@ app.use((req, res, next) => {
   }
   next()
 })
-
-
-
-
 // TODO: 对于内容未进行转义 应当对所有的字符串进行转义 再提交 
 // 不然会报错errno1064
 app.use('/login', login)
@@ -65,8 +59,6 @@ app.use('/user', user)
 app.use('/article', article)
 app.use('/note', note)
 app.use('/upload', uploadImage)
-
-
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })

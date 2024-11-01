@@ -28,7 +28,6 @@
     return input.value?.account
   })
   const text = '确定吗？'
-  
   const checkPassword = () => {
     //后端进行密码校对 对了就有返回值
     service.get(`/login/password?account=admin&password=${password.value}`)

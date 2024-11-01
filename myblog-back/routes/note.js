@@ -47,6 +47,32 @@ router.get('/getnotedetail', (req, res) => {
     )
 })
 
+router.post('/addnote', async (req, res) => {
+  const { title, description, note, tags } = req.body
+  const sql = `
+    insert into note (title,note,description) values ('${title}','${note}','${description}')
+  `
+  const { insertId } = await db(sql)
+  await Promise.all(
+    tags.map(element => {
+      const sqlTag = `
+        insert into tags (tag,note_id) values ('${element}','${insertId}')
+        `
+      db(sqlTag)
+    })
+  )
+  if (insertId) {
+    res.send({
+      message: 'ok'
+    })
+  } else {
+    res.send({
+      message: 'fail'
+    })
+  }
+
+
+})
 
 
 router.post('/addtag', (req, res) => {
@@ -66,7 +92,6 @@ router.post('/addtag', (req, res) => {
       })
     })
 })
-
 
 
 router.post('/addnote', (req, res) => {

@@ -42,7 +42,7 @@ router.get('/getarticledetail', (req, res) => {
 })
 router.post('/addarticle', (req, res) => {
   const { title, description, imageUrl, article, categories } = req.body
-  const Tarticle = note.replace(/'/g, "\\'").replace(/"/g, '\\"')
+  const Tarticle = article.replace(/'/g, "\\'").replace(/"/g, '\\"')
   const sql = `insert into article ( article,imageUrl,title,description,categories) values ('${Tarticle}','${imageUrl}','${title}','${description}',${categories});
   `
   db(sql)

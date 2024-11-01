@@ -1,5 +1,11 @@
 
 const routes = [
+  {
+    name: 'test',
+    path: '/test',
+    component: () => import('@/views/test/index.vue')
+  },
+
 
   //登录路由
   {
@@ -72,6 +78,14 @@ const routes = [
     path: '/add-article',
     //@ts-ignore
     component: () => import('@/views/edit/article/components/add-article.vue')
+  },
+
+
+  {
+    name: 'add-note',
+    path: '/add-note',
+    //@ts-ignore
+    component: () => import('@/views/edit/note/components/add.vue')
   },
   {
     name: 'edit-note',

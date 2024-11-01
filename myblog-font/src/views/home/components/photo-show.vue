@@ -145,8 +145,7 @@ onMounted(()=>{
     scrub:true
   })  
   // 使用pin会影响间距
-  
-
+  //gsap modifier 实现旋转木马
 })
 </script>
 

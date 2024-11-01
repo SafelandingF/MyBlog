@@ -28,9 +28,9 @@
   
 </template>
 <script setup lang="ts">  
-  import cardAcrticle from '@/components/card-acrticle.vue'; 
+  import cardAcrticle from '@/components/cardArticle.vue'; 
   import useUserinfoStore from '@/stores/userInfo';
-  import editButton from '@/components/edit-button.vue';
+  import editButton from '@/components/editButton.vue';
   import { storeToRefs } from 'pinia';
   import service from '@/utils/service';
   import { reactive, ref , onMounted ,computed} from 'vue';

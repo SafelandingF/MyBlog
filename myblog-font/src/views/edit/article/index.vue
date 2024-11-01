@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-  import cardAcrticle from '@/components/card-acrticle.vue'; 
+  import cardAcrticle from '@/components/cardArticle.vue'; 
   import { storeToRefs } from 'pinia';
   import service from '@/utils/service';
   import { reactive, ref , onMounted } from 'vue';
