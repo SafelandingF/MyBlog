@@ -352,14 +352,14 @@ onMounted(()=>{
   .text-container {
     height: 2000px;
     .desktopContentSection{
-      font-family: yutong-font;
+      font-family: PING FANG YU TONG;
       font-size: 40px;
       padding-top: 300px;
       padding-bottom: 100px;
     }
   }
   .title{
-    font-family: yutong-font;
+    font-family: PING FANG YU TONG;
     font-size: 80px;
     margin-top: 100px;
     text-align: center;

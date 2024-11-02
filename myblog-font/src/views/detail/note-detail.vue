@@ -199,7 +199,7 @@ onMounted(() => {
       padding-left: 0;
     }
     .note-description{
-      font-family: ChillRound;
+      font-family: 寒蝉半圆体;
       font-size: 25px;
       line-height: 1.2em;
       text-indent: 2em;
@@ -207,7 +207,7 @@ onMounted(() => {
   }
 
   .content-container{
-    font-family: CHillRound;
+    font-family: 寒蝉半圆体;
     border: 2px black solid;
     height: auto;
     font-size: 20px;

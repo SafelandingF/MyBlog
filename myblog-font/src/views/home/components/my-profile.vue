@@ -207,7 +207,7 @@ onMounted(()=>{
   .icon-name{
     font-style: italic;
     font-size: 100px;
-    font-family: yutong-font;
+    font-family: PING FANG YU TONG;
   }
 }
 </style>

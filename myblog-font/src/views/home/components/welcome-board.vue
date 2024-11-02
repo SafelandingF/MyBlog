@@ -213,7 +213,7 @@ onMounted(() => {
   margin: 0;
   
   .welcome-title0{
-    font-family: yutong-font;
+    font-family: PING FANG YU TONG;
     text-align: center;
     display: flex;
     align-items: center;

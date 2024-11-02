@@ -115,7 +115,7 @@ onMounted(()=>{
     }
   }
   .essay-preview-container{
-    font-family: ChillRound;
+    font-family: 寒蝉半圆体;
     border-top-right-radius: 22px;
     border-bottom-right-radius: 22px;
     width: 60%;
@@ -129,14 +129,14 @@ onMounted(()=>{
       height: 70%;
       background-color: #fff;
       border-radius: 25px;
-      font-family: yutong-font;
+      font-family: PING FANG YU TONG;
       padding: 20px;
       p{
-        font-family: ChillRound;
+        font-family: 寒蝉半圆体;
         line-height: 1.5em;
       }
       h2{
-        font-family: ChillRound;  
+        font-family: 寒蝉半圆体;  
         text-align: center;
         margin:0;
       }

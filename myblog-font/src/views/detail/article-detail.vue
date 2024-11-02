@@ -97,7 +97,7 @@ const goToHome = ()=>{
 }
 .article-detail-container{
   padding-top: 50px ;
-  font-family: ChillRound;
+  font-family: 寒蝉半圆体;
   display: flex;
   width: 80vw;
   margin: 0 auto;
@@ -136,7 +136,7 @@ const goToHome = ()=>{
     margin-right: 15px;
     .title-container{
     text-wrap: wrap;
-    font-family: ChillRound;
+    font-family: 寒蝉半圆体;
     text-align: center;
     font-size: 70px;
     width: 70px;
@@ -182,7 +182,7 @@ const goToHome = ()=>{
     width: 60vw;
     padding: 20px;
     .title-container{
-      font-family: ChillRound;
+      font-family: 寒蝉半圆体;
       text-align: center;
     }
 

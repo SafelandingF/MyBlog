@@ -94,7 +94,7 @@
 
   .essay-container-title {
     width: 100%;
-    font-family: yutong-font;
+    font-family: PING FANG YU TONG;
     height: 50px;
     line-height: 50px;
     text-align: center;

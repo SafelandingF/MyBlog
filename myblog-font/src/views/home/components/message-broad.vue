@@ -223,7 +223,7 @@ onMounted(() => {
   height: 20vh;
   text-align: center;
   span{
-    font-family: yutong-font;
+    font-family: PING FANG YU TONG;
     font-size: 100px;
   }
 }
@@ -257,7 +257,7 @@ onMounted(() => {
     .card-full {
       grid-area: full;  
       .message-comment{
-        font-family: ChillRound;
+        font-family: 寒蝉半圆体;
         margin: 0 auto;
         margin-top: 10px;
         width: 90%;

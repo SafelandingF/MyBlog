@@ -218,7 +218,7 @@ import { addNoteAPI } from '@/apis/getNote';
   * TODO: 修改todo样式 不太会改
   */
   // 下面的代码很合适了
-  font-family: ChillRound;
+  font-family: 寒蝉半圆体;
   letter-spacing: 1px;
   line-height: 1.5em;
   :deep(code) {

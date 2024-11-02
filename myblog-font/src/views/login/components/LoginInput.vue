@@ -36,7 +36,7 @@ defineExpose({
   height: 60px;
   padding: 12px;
   font-size: 18px;
-  font-family: yutong-font;
+  font-family: PING FANG YU TONG;
   color: #000;
   background-color: #fff;
   border: 4px solid #000;

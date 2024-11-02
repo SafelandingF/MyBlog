@@ -70,7 +70,7 @@ onMounted(()=>{
    position: relative;
    justify-content: space-evenly;
    .note-welcome {
-    font-family: yutong-font;
+    font-family: PING FANG YU TONG;
      position: absolute;
      top: -100px;
      left: 50%;

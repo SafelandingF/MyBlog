@@ -51,7 +51,7 @@ onMounted(() => {
       align-items: center;
       .item{
         font-size: 30px;
-        font-family: yutong-font;
+        font-family: PING FANG YU TONG;
         height: 60px;
         line-height: 60px;
         text-align: center;
@@ -77,7 +77,7 @@ onMounted(() => {
       align-items: center;
       .item{
         font-size: 30px;
-        font-family: yutong-font;
+        font-family: PING FANG YU TONG;
         height: 60px;
         line-height: 60px;
         text-align: center;
