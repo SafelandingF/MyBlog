@@ -108,14 +108,12 @@ onMounted(()=>{
     '.icon-svg2',
     '.icon-svg3',
     '.icon-svg4',
-    '.icon-svg5',
   ])
   const ids = gsap.utils.toArray([
     '.icon-id1',
     '.icon-id2',
     '.icon-id3',
     '.icon-id4',
-    '.icon-id5',
   ])
   icons.forEach(item =>{
     gsap.fromTo(item as any,{
@@ -147,8 +145,49 @@ onMounted(()=>{
     }
   })
   })
-
+  gsap.fromTo('.icon-svg5',{
+    x:-500,
+    y:0
+  },{
+    keyframes:{
+      "0%":{
+        x:-500,
+        y:0,
+      },
+      "50%":{
+        x:150,
+        y:0,
+        scale:0.8,
+      },
+      "100%":{
+        rotate:360,
+        scale:2.2
+      }
+    },
+    duration:2,
+    scrollTrigger:{
+      trigger:'.icon-svg5',
+      start:'top 80%',
+      end:'bottom 50%',
+      scrub:1,
+    }
+  })
+  gsap.fromTo('.icon-id5',{
+    x:500,
+    y:0
+  },{
+    x:-200,
+    y:0,
+    scrollTrigger:{
+      trigger:'.icon-svg5',
+      start:'top 80%',
+      end:'bottom 80%',
+      scrub:1,
+    }
+  })
 })
+
+
  
 </script>
 
