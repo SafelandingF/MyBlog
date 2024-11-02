@@ -33,7 +33,7 @@ import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { useRoute } from 'vue-router';
 import service from '@/utils/service'
-
+import { addEssayAPI } from '@/apis/getArticle';
   // 编辑器实例，必须用 shallowRef 可以通过 .value 获取实例然后调用api
     const editorRef = shallowRef()
     const route = useRoute()
@@ -54,7 +54,7 @@ import service from '@/utils/service'
     // 添加文章
     // TODO:这里还要设置标题
     const addArticle = () =>{
-      service.post('/article/addarticle', {
+     addEssayAPI({
         title: '测试标题',
         description:'测试描述',
         imageUrl:'测试图片',

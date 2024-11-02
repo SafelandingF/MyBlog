@@ -7,18 +7,13 @@ const service = axios.create({
     "Content-Type": "application/json"
   }
 })
-
-
 //! 在请求拦截器处设置请求头的token
-
-
 /*
   @ 我们在拦截器部分设置请求体token即可 
   @ 并不需要在这一步判断路由条件
   @ 在route中处理有无token的情况
 */
 service.interceptors.request.use(config => {
-
   if (localStorage.getItem('token')) {
     config.headers['authorization'] = localStorage.getItem('token')
   }
@@ -30,7 +25,6 @@ service.interceptors.request.use(config => {
   console.log(err)
   return Promise.reject(err)
 })
-
 
 
 

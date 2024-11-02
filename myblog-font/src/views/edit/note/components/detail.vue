@@ -31,6 +31,7 @@
 
 <script setup >
 //! TODO:这里展示的时候可以使用readonly
+import { getNoteDetailAPI,editNoteAPI} from '@/apis/getNote';
 //这里使用lang="ts"会报错
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import { onBeforeUnmount, ref, shallowRef, onMounted, onBeforeMount } from 'vue'
@@ -138,7 +139,7 @@ import service from '@/utils/service'
     }
     //获取文章详情
     const getNoteDetail = () =>{
-      service.get('/note/getnotedetail?note_id=' + id,)
+      getNoteDetailAPI({note_id: id})
         .then(res => {
           valueHtml.value = res.data[0].note
           title.value = res.data[0].title
@@ -151,8 +152,7 @@ import service from '@/utils/service'
     }
     //修改文章
     const editNote = () =>{
-      console.log(id)
-      service.post('/note/editnote', {
+      editNoteAPI({
         note_id: id,
         title: title.value,
         description:description.value,
@@ -165,10 +165,6 @@ import service from '@/utils/service'
           console.log(err)
        })
     }
-
-
-
-
 </script>    
 
 <style scoped lang="scss">

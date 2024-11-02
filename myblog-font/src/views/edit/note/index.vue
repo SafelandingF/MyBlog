@@ -14,14 +14,13 @@
 
 <script setup lang="ts">
 import note from '@/components/note.vue';
-
 import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';
 import service from '@/utils/service';
 import { ref,onMounted } from 'vue';
-
 import router from '@/router';
 
+import { getNoteAPI } from '@/apis/getNote';
 
 interface Note {
   note_id:number,
@@ -33,7 +32,7 @@ const  userInfoStore = useUserinfoStore()
 const { userinfo } = storeToRefs(userInfoStore)
 const noteInfo = ref<Note[]>([])
 const getNote = () =>{
-  service.get('/note/getnote')
+  getNoteAPI()
   .then(res =>{
     noteInfo.value = res.data
     console.log('123')

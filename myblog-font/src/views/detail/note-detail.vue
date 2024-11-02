@@ -30,6 +30,7 @@ import service from '@/utils/service';
 import { onMounted,reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import noteTag from '@/components/noteTag.vue';
+import { getNoteDetailAPI } from '@/apis/getNote';
 interface resNoteDetail {
   note_id:number,
   note:string,
@@ -54,7 +55,7 @@ noteDetail.note_id =Number(route.params.id)
 
 
 const getNoteDetail =  () => {
-  service.get('note/getnotedetail?note_id='+route.params.id)
+  getNoteDetailAPI({note_id:route.params.id})
   .then(res =>{
     noteDetail.note = res.data[0].note;
     noteDetail.title = res.data[0].title;
@@ -62,8 +63,7 @@ const getNoteDetail =  () => {
   })
   .catch(err =>{
     console.log(err)
-  } 
-  )
+  })
 }
 
 const getNoteTag = () =>{

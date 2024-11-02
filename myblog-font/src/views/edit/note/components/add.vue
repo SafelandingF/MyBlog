@@ -39,6 +39,7 @@ import { onBeforeUnmount, ref, shallowRef, onMounted, onBeforeMount } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { useRoute } from 'vue-router';
 import service from '@/utils/service'
+import { addNoteAPI } from '@/apis/getNote';
 // 编辑器实例，必须用 shallowRef 可以通过 .value 获取实例然后调用api
     const tags = ref('')
     const title = ref('')
@@ -136,7 +137,7 @@ import service from '@/utils/service'
       console.log('123123123')
       const tagArr = tags.value.split(',')
       console.log(tagArr)
-      service.post('/note/addnote', {
+      addNoteAPI({
         title: title.value,
         description:description.value,
         note: valueHtml.value,

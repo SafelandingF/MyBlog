@@ -42,15 +42,7 @@ import essayBoard from './components/essay-board.vue';
 import noteBoard from './components/note-board.vue';
 import navBar from './components/nav-bar.vue';
 
-import getScroll from '@/utils/windows';
-
-const top = ref<number>(0)
-const left = ref<number>(0)
-
-const useScroll =( ) =>{
-  top.value = getScroll().top
-  console.log(top.value)
-}
+import { getUserinfoAPI } from '@/apis/getUserInfo';
 
 //设置平滑滚动
 const lenis = new Lenis({
@@ -69,15 +61,10 @@ gsap.registerPlugin(ScrollTrigger)
 //? 好像有可以了 好神奇？？？
 const getUserinfo = async() =>{
   const userInfoStore = await useUserinfoStore()
-  service.get('/user')
-  .then(res =>{
+  getUserinfoAPI().then(res =>{
     userInfoStore.setUserInfo(res.data) 
-    console.log(res.data)
-    console.log('get')
-  })
-  .catch(err =>{
-    console.log(err)
-    console.log('err')
+  }).catch(err =>{
+    console.log('err',err)
   })
 }
 

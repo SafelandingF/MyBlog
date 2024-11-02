@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+  import { getEssayAPI } from '@/apis/getArticle';
   import cardAcrticle from '@/components/cardArticle.vue'; 
   import { storeToRefs } from 'pinia';
   import service from '@/utils/service';
@@ -26,12 +27,9 @@
   // TODO:这里还有分表 任务
   const essay = ref<Essay[]>([])
   const getEssay = () =>{
-    service.get('/article/getarticle')
+    getEssayAPI()
     .then(res =>{
       essay.value = res.data
-      console.log('---')
-      console.log(essay.value)
-      console.log('---')
     })
     .catch(err => console.log(err))
   }

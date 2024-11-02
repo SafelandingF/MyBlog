@@ -34,7 +34,8 @@
   import { storeToRefs } from 'pinia';
   import service from '@/utils/service';
   import { reactive, ref , onMounted ,computed} from 'vue';
-import router from '@/router';
+  import router from '@/router';
+  import { getEssayAPI } from '@/apis/getArticle';
   interface Essay{
     article_id:number,
     imageUrl:string,
@@ -46,14 +47,9 @@ import router from '@/router';
   const {userinfo} = storeToRefs(userInfoStore)
   const essay = ref<Essay[]>([])
   const getEssay = () =>{
-    service.get('/article/getarticle')
-    .then(res =>{
+    getEssayAPI().then(res =>{
       essay.value = res.data
-      console.log('---')
-      console.log(essay.value)
-      console.log('---')
-    })
-    .catch(err => console.log(err))
+    }).catch(err => console.log(err))
   }
   const goToEdit = () =>{
     router.push('/edit-article')
@@ -87,6 +83,7 @@ import router from '@/router';
     console.log(start.value,end.value)
   }
 }
+
   onMounted(()=>{
     getEssay()
   })

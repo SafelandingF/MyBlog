@@ -75,7 +75,7 @@ router.delete('/deletearticle', (req, res) => {
 })
 router.post('/editarticle', (req, res) => {
   const { article_id, title, description, imageUrl, article, categories } = req.body
-  const Tarticle = note.replace(/'/g, "\\'").replace(/"/g, '\\"')
+  const Tarticle = article.replace(/'/g, "\\'").replace(/"/g, '\\"')
   const sql = `update article set title = '${title}',description = '${description}',imageUrl = '${imageUrl}',article = '${Tarticle}',categories = ${categories} where article_id = ${article_id};
   `
   db(sql)

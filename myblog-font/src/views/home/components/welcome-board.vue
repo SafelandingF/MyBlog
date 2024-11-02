@@ -33,7 +33,7 @@
 import gsap from 'gsap';
 import { onMounted } from 'vue';
 onMounted(() => {
-  
+  //这里真是屎山代码 到以后在优化
   gsap.fromTo('.ani-wel1',{x:-500,y:0,},{
     keyframes:{
       "0%": {
@@ -93,7 +93,6 @@ onMounted(() => {
       scrub:3,
     }
   })
-
   gsap.fromTo('.welcome-title1',{
     y:0,
     scale:1.4,
@@ -108,7 +107,6 @@ onMounted(() => {
        
     }
   })
-
   gsap.fromTo('.welcome-title2',{
     scale:1
   },{
@@ -122,7 +120,6 @@ onMounted(() => {
       
     }
   })
-
   gsap.fromTo('.welcome-title3',{
     scale:1
   },{
@@ -136,8 +133,6 @@ onMounted(() => {
       
     }
   })
-
-
   gsap.fromTo('.welcome-title4',{
     scale:1
   },{
@@ -151,7 +146,6 @@ onMounted(() => {
       
     }
   })
-
   gsap.fromTo('.welcome-title5',{
     scale:1
   },{
@@ -178,7 +172,6 @@ onMounted(() => {
       
     }
   })
-
   gsap.fromTo('.welcome-title7',{
     scale:1
   },{

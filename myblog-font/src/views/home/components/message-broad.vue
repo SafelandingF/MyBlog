@@ -86,6 +86,9 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import useUserinfoStore from '@/stores/userInfo';
 import { storeToRefs } from 'pinia';
 import service from '@/utils/service';
+
+import { getMessageAPI,getCommentAPI,submitCommentAPI} from '@/apis/getMessage';
+
 interface resMessage {
   account:string,
   id:number,
@@ -99,6 +102,7 @@ interface resComment {
   message_id:number,
   comment:string
 }
+
 const  userInfoStore = useUserinfoStore()
 const { userinfo } = storeToRefs(userInfoStore)
 const message = ref<resMessage[]>([])
@@ -106,49 +110,6 @@ const message = ref<resMessage[]>([])
 // 这里后端处理好数据在返回来
 const comment = ref<resComment[]>([])
 const commentInput = ref<string>('')
-const getMessage = () =>{
-  service.get('/message/getmessage')
-  .then(result =>{
-    message.value = result.data
-    console.log(message.value)
-  })
-  .catch(err =>{
-    console.log(err)
-  })
-}
-const getComment = (messageId:number)=>{
-  service.get(`/message/getcomment?messageId=${messageId}`)
-  .then(result =>{
-    comment.value = result.data
-  })
-  .catch(err =>{
-    console.log(err)
-  })
-}
-onBeforeMount(()=>{
-  getMessage()  
-})
-onMounted(() => {
-  console.log(userinfo.value.authorization)
-  const typed = new Typed('#me-text', {
-    strings: ['你对我的第一印象是什么', 
-              '现在觉得我是个什么样的人',
-              '请留言'
-             ],
-    typeSpeed: 50,
-    backSpeed: 100,
-  });
-  typed.stop()
-  const tri = ScrollTrigger.create({
-    trigger:'.message-container',
-    start: 'top 100%',
-    onEnter: () =>{
-      typed.start()
-    }
-  })  
-})
-
-// FIXME:这里的生命周期控制的有问题
 const messageID = reactive<resMessage>({
   id:1,
   message_id:1,
@@ -157,6 +118,25 @@ const messageID = reactive<resMessage>({
   like:0,
   dislike:0
 })
+
+const getMessage = () =>{
+  getMessageAPI().then(result =>{
+    message.value = result.data
+    console.log(message.value)
+  }).catch(err =>{
+    console.log(err)
+  })
+}
+const getComment = (messageId:number)=>{
+  getCommentAPI({messageId})
+  .then(result =>{
+    comment.value = result.data
+  })
+  .catch(err =>{
+    console.log(err)
+  })
+}
+// FIXME:这里的生命周期控制的有问题
 const uplodadMessageId =(emit:number)=>{
   messageID.id = emit-1
   messageID.account = message.value[emit-1].account
@@ -194,16 +174,39 @@ const rightPage = ()=>{
   }
 }
 const submitComment = () =>{
-  service.post('/message/addcomment',{
+  submitCommentAPI({
     comment:commentInput.value,
     messageId:messageID.message_id
-  })
-  .then(result =>{
+  }).then(result =>{
     console.log(result)
     getComment(messageID.message_id)
-  }
-  )
+  })
 }
+
+onBeforeMount(()=>{
+  getMessage()  
+})
+onMounted(() => {
+  console.log(userinfo.value.authorization)
+  const typed = new Typed('#me-text', {
+    strings: ['你对我的第一印象是什么', 
+              '现在觉得我是个什么样的人',
+              '请留言'
+             ],
+    typeSpeed: 50,
+    backSpeed: 100,
+  });
+  typed.stop()
+  const tri = ScrollTrigger.create({
+    trigger:'.message-container',
+    start: 'top 100%',
+    onEnter: () =>{
+      typed.start()
+    }
+  })  
+})
+
+
 </script>
 <style scoped lang="scss">  
 .message-input {

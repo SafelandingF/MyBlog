@@ -30,6 +30,8 @@
 </template>
 
 <script setup >
+import {getEssayDetailAPI,editEssayAPI } from '@/apis/getArticle';
+
 //! TODO:这里展示的时候可以使用readonly
 //这里使用lang="ts"会报错
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
@@ -124,14 +126,12 @@ import service from '@/utils/service'
       }
     }
     }
-    onBeforeMount(()=>{
-    
-    })
+
     onMounted(() => {
       getArticleDetail()
-      setTimeout(()=>{
-        console.log(editorRef.value.getAllMenuKeys())
-      },1000  )
+      // setTimeout(()=>{
+      //   console.log(editorRef.value.getAllMenuKeys())
+      // },1000  )
     })
     // 组件销毁时，也及时销毁编辑器
     onBeforeUnmount(() => {
@@ -144,7 +144,7 @@ import service from '@/utils/service'
     }
     //获取文章详情
     const getArticleDetail = () =>{
-      service.get('/article/getarticledetail?article_id=' + id,)
+        getEssayDetailAPI({article_id: id})
         .then(res => {
           valueHtml.value = res.data[0].article
           title.value = res.data[0].title
@@ -159,7 +159,7 @@ import service from '@/utils/service'
     //修改文章
     const editArticle = () =>{
       console.log(id)
-      service.post('/article/editarticle', {
+      editEssayAPI({
         article_id: id,
         title: title.value,
         description:description.value,
@@ -167,7 +167,7 @@ import service from '@/utils/service'
         article: editorRef.value.getHtml(),
         categories: categories.value,
       })
-        .then(res => {
+      .then(res => {
           console.log(res)
         })
         .catch(err => {

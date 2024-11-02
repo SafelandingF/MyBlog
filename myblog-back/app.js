@@ -15,11 +15,6 @@ const article = require('./routes/article.js')
 const note = require('./routes/note.js')
 const uploadImage = require('./routes/upload.js')
 const app = express();
-//这里是文件传输
-// const upload = multer({
-//   dest: '/public/upload'
-// })
-// app.use(upload.any())
 app.use(cors())
 app.use(express.static('./public'))
 //设置token拦截
@@ -32,7 +27,6 @@ app.use(jwt({
     '/home',
     '/vistor',
     '/register',
-    '/login/password',
     '/upload/upload-image'
   ]
 })

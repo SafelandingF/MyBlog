@@ -24,6 +24,7 @@ import service from '@/utils/service';
 import { ref,onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import router from '@/router';
+import { getNoteAPI } from '@/apis/getNote';
 
 
 interface Note {
@@ -36,19 +37,17 @@ const  userInfoStore = useUserinfoStore()
 const { userinfo } = storeToRefs(userInfoStore)
 const noteInfo = ref<Note[]>([])
 const getNote = () =>{
-  service.get('/note/getnote')
-  .then(res =>{
-    noteInfo.value = res.data
-    console.log('123')
-    console.log(noteInfo.value)
-    console.log('123')
-  })
+  getNoteAPI()
+    .then(res =>{
+       noteInfo.value = res.data
+    })
+    .catch(err =>{
+      console.log(err)
+    })
 }
 const goToEdit =() =>{
   router.push('/edit-note')
 }
-
-
 onMounted(()=>{
   getNote()
 })
