@@ -1,6 +1,6 @@
 <template>
 
-  <div class="BGC">
+  <div class="BGC" ref="BGC">
     <div class="article-detail-container">
       <div class="article-left"> 
         <div class="title-container">{{title}}</div>
@@ -19,16 +19,21 @@
       </div> 
      </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
 import service from '@/utils/service';
-import { ref,onMounted } from 'vue';
+import { ref,onMounted,onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
 import '../../assets/edit/circle-green.svg'
 import { getEssayDetailAPI } from '@/apis/getArticle';
+
+const gotoTop= () =>{
+  document.body.scrollTo(0,0)
+  window.scrollTo(0,0)
+}
+const BGC=ref()
 const router = useRouter()
 const route = useRoute()
 const article_id = route.params.id
@@ -43,12 +48,16 @@ const getArticle = ()=>{
     title.value = res.data[0].title
     description.value = res.data[0].description
     imageUrl.value = res.data[0].imageUrl
+
   })
 }
+
 
 onMounted (()=>{
   getArticle()
 })
+
+
 
 const goToHome = ()=>{
   router.push({path:'/home'})
@@ -56,7 +65,14 @@ const goToHome = ()=>{
 
 </script>
 <style scoped lang="scss">
+
+
+
+
+
 .BGC{
+  height: 100vh;
+  overflow: hidden;
   animation: movebackground 10s steps(10,end) infinite;
   background-image: url('@/assets/imgs/noise.webp');
   @keyframes movebackground {
@@ -100,9 +116,8 @@ const goToHome = ()=>{
   font-family: 寒蝉半圆体;
   display: flex;
   width: 80vw;
+  height: 100vh;
   margin: 0 auto;
-
-
   .article-left{
     &::after{
       position: absolute;
@@ -124,9 +139,6 @@ const goToHome = ()=>{
       rotate: 90deg;
       content: '';
     }
-
-
-
     position: relative;
     width: 20vw;
     padding: 20px;
@@ -138,8 +150,8 @@ const goToHome = ()=>{
     text-wrap: wrap;
     font-family: 寒蝉半圆体;
     text-align: center;
-    font-size: 70px;
-    width: 70px;
+    font-size: 5vw;
+    width: 5vw;
     padding-right:  5px;
     border-right: 2px solid black;
     }
@@ -193,7 +205,9 @@ const goToHome = ()=>{
   .atricle-container {
     border: 2px black solid;
     width: 60vw;
-    height: 100vh;
+    height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
     font-size: 20px;
     line-height: 1.5em;
     padding: 20px;
@@ -254,6 +268,45 @@ const goToHome = ()=>{
 
 
 
+}
+
+
+@media (max-width: 768px) {
+  .BGC{
+    width: auto;
+    overflow: scroll;
+  }
+  .article-detail-container{
+    height: auto;
+    flex-direction: column;
+    overflow: scroll;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    .article-left{
+      margin: 0;
+      width: 80vw;
+      .description-container{
+        width: 75vw;
+      }
+      .title-container{
+        width: 80vw;
+        font-size: 8vw;
+      }
+    }
+    .article-right{
+      width: 80vw;
+      .atricle-container{
+        margin: 0 auto;
+        width: 70vw;
+        overflow: scroll;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  
 }
 
 </style>

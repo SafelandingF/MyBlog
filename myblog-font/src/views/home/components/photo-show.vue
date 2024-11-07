@@ -338,6 +338,7 @@ onMounted(()=>{
 }
 
 .camera-container {
+  margin: 0 auto;
   margin-top: 100px;
   //scroll-snap-type: y proximity;
   height: 4000px;
@@ -347,7 +348,7 @@ onMounted(()=>{
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   padding-bottom: 300px;
   .text-container {
     height: 2000px;

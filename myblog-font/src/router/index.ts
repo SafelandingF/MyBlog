@@ -16,7 +16,7 @@ import routes from './routes'
  */
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes: routes
+  routes: routes,
 })
 
 // 路由守卫
