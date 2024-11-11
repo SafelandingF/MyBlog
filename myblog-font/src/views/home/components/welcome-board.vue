@@ -326,4 +326,21 @@ onMounted(() => {
     opacity: 0.1;
   }
 }
+
+@media (max-width: 786px) {
+  .welcome-container{
+    padding-top: 0;
+    height: 200vh;
+    margin-bottom: -50vh;
+    .welcome-title0{
+      font-size: 100px;
+    }
+    @for $i from 1 through 7{
+      .welcome-title#{$i}{
+        font-size: 15px;
+        margin-bottom: 0;
+      } 
+    }
+  }
+}
 </style>

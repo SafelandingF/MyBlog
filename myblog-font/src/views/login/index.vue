@@ -90,8 +90,7 @@
     background-position: 1100vw 1100vh;
   };
 }
-
-  .container{
+.container{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -99,7 +98,6 @@
     align-items: center;
     overflow: hidden;
     flex-direction: column;
-
     background-image: url('@/assets/imgs/noise.webp');
     /*
     background-image: -moz-linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
@@ -107,12 +105,7 @@
     background-image: linear-gradient(90deg, rgb(255, 193, 168), rgb(206, 199, 255));
     */
     background-repeat: repeat;
-
-  
-    
     animation: movebackground 10s steps(10,end) infinite;
-
-
     .text {
       font-family: ali-font;
       font-size: 150px;
@@ -128,7 +121,6 @@
       align-items: center;
       flex-direction: column;
       gap: 10px;
-
       .login-input{
         transform: translateX(-23px);
       }
@@ -136,5 +128,16 @@
         transform: translateY(25px);
       }
     }
+}
+@media (max-width:768px) {
+  .container{
+    .text{
+      font-size: 100px;
+    }
+    .login{
+      scale: 0.8;
+      transform: translateY(-50%);
+    }
   }
+}
 </style>

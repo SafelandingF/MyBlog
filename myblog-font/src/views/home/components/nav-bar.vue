@@ -96,5 +96,25 @@ onMounted(() => {
       } 
     }
   }
+
+
+  @media (max-width: 768px) {
+    .nav-container {
+      .nav-left{
+        width: 200px;
+        .item{
+          font-size: 20px;
+        }
+      }
+      .nav-right{
+        width: 200px;
+        .item{
+          font-size: 20px;
+        }
+      }
+
+    }
+    
+  }
   
 </style>

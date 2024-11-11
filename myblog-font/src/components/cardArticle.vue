@@ -59,9 +59,9 @@ onMounted(()=>{
   border: 2px solid #114038;
   cursor: pointer;
   width: 36vw;
-  height: 30vh;
-  min-width: 500px;
-  min-height: 250px;
+  height: 18vw;
+  min-width: 350px;
+  min-height: 175px;
   position: relative;
   display: flex;
   border-radius: 25px;
@@ -125,6 +125,7 @@ onMounted(()=>{
     align-items: center;
     justify-content: center;
     .essay-preview{
+      overflow: hidden;
       width: 70%;
       height: 70%;
       background-color: #fff;

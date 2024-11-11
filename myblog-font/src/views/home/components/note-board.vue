@@ -59,7 +59,8 @@ onMounted(()=>{
   .note-board-container {
     width: 70vw;
     margin: 0 auto;
-   height: 100vh;
+    padding-bottom: 200px;
+   height: auto;
    display: flex;
    justify-items: center;
    align-items: center;
@@ -70,11 +71,21 @@ onMounted(()=>{
    position: relative;
    justify-content: space-evenly;
    .note-welcome {
+    width: 70%;
     font-family: PING FANG YU TONG;
-     position: absolute;
-     top: -100px;
-     left: 50%;
-     transform: translateX(-50%);
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
    }
+  }
+
+  @media (max-width: 768px) {
+    .note-board-container{
+      .note-welcome{
+        font-size: 15px;
+      }
+    }
   }
 </style>

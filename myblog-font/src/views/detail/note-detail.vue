@@ -92,7 +92,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   animation: movebackground 10s steps(10,end) infinite;
   background-image: url('@/assets/imgs/noise.webp');
   @keyframes movebackground {
@@ -165,10 +164,11 @@ onMounted(() => {
   }
 
   .title-container{
-    
+    line-height: 1.2em;
     max-width: 60%;
     font-size: 50px;
     font-family: Mono;
+    font-family: 寒蝉半圆体;
     margin-bottom: 30px;
     padding-left: 50px;
     padding-right: 50px;
@@ -180,9 +180,7 @@ onMounted(() => {
 
 
   .description-container{
-
     width: 60%;
-   
     margin-top: 50px;
     margin-bottom: 50px;
     border: 3px black dashed;
@@ -233,12 +231,14 @@ onMounted(() => {
       display: block;
       height: 30px;
       border-radius: 100%;
+      overflow: scroll;
     }
     :deep(pre code){
       font-family: Mono;
       display: block;
       width: auto;
       height: auto;
+      overflow-x: scroll;
     }
     :deep(blockquote){
       font-style: italic;
@@ -266,10 +266,44 @@ onMounted(() => {
       padding: 0;
     }  
   }
-  
 
 }
+@media (max-width: 786px) {
+  .bgc{
+    box-sizing: border-box;
+    padding: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 100%;
+    overflow-x: hidden;
+    .id-container{
+      left: 5%;
+      top: 0;
+      scale: 0.8;
+    }
+    .title-container{
+      width: auto;
+      max-width: 100%;
+      padding-top: 10px;
+      min-height: 30px;
+      font-size: 20px;
+    }
+    .description-container{
+      width: 70vw;
+      p{
+        font-size: 20px;
+      }
+      .note-description{
+        font-size: 15px;
+      }
+    }
+    .content-container{
+      width: 75%;
+    }
 
+
+  }
+}
 
 
 

@@ -5,8 +5,10 @@
   <div class="essay-board-container">
     <edit-button v-show="userinfo.authorization" @click="goToEdit"></edit-button>
     <div class="essay-board">
-      <cardAcrticle 
+      <cardAcrticle  
+
       v-for="(item,index) in showEssay" 
+      :class="`essay-card-${index}`"
       :id="item.article_id"
       :image="item.imageUrl"
       :title="item.title"
@@ -36,6 +38,7 @@
   import { reactive, ref , onMounted ,computed} from 'vue';
   import router from '@/router';
   import { getEssayAPI } from '@/apis/getArticle';
+  import gsap from 'gsap';
   interface Essay{
     article_id:number,
     imageUrl:string,
@@ -85,7 +88,12 @@
 }
 
   onMounted(()=>{
-    getEssay()
+     getEssay()
+
+
+    
+
+
   })
 </script>
 
@@ -167,5 +175,22 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .essay-container-title{
+      font-size: 40px;
+
+    }
+    .essay-board-container{
+      .essay-board{
+        .essay-card{
+          font-size: 15px;
+        }
+
+      }
+    }
+    
+  }
+
 
 </style>

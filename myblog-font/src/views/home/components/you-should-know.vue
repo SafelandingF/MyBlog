@@ -43,4 +43,12 @@ onMounted(()=>{
   transform: rotate(-90deg) translateY(-50px);
   scale: 0;
 }
+
+@media (max-width: 768px) {
+  .you-should-know{
+    height: 5vh;
+    line-height: 5vh;
+    font-size: 15px;
+  }
+}
 </style>

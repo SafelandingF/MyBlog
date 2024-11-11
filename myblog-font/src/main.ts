@@ -13,4 +13,6 @@ app.use(router)
 app.use(vue3lottie)
 app.mount('#app')
 
+// TODO:由于改变了route模式，所以需要重新配置路由
+
 

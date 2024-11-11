@@ -1,11 +1,11 @@
 <template>
   <div class="bgc-container">
-    <navBar></navBar>
+    <!-- <navBar></navBar> -->
     <welcome></welcome>
     <youShouldKnow></youShouldKnow>
     <myProfile></myProfile>、
-    <photoShow id="photo"></photoShow>
-    <messageBroad id="message"></messageBroad>
+    <photoShow ref="photo" id="photo"></photoShow>
+    <messageBroad ref="message" id="message"></messageBroad>
     
     <!--  
      TODO: 这里想要的效果是点击相机 然后相机放大 然后展示 照片集  //TODO: 这个想法有点问题 暂时先不做了
@@ -14,8 +14,8 @@
     </div>
   -->
     <!-- TODO: 这里还要进行数据交互和每一个board的绑定-->
-    <essayBoard id="essay"></essayBoard>
-    <noteBoard id="note"></noteBoard>
+    <essayBoard ref="essay" id="essay"></essayBoard>
+    <noteBoard ref="note" id="note"></noteBoard>
 
 </div>
 </template>

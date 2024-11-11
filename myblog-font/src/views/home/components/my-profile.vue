@@ -102,8 +102,11 @@ import steamIdIcon from '@/icons/steamIdIcon.vue';
 import earthIcon from '@/icons/earthIcon.vue';
 
 import { onMounted } from 'vue';
-onMounted(()=>{
-  const icons = gsap.utils.toArray([
+onMounted(
+  ()=>{
+    const mm = gsap.matchMedia();
+    mm.add("(min-width:768px)",()=>{
+      const icons = gsap.utils.toArray([
     '.icon-svg1',
     '.icon-svg2',
     '.icon-svg3',
@@ -185,6 +188,8 @@ onMounted(()=>{
       scrub:1,
     }
   })
+    })
+ 
 })
 
 
@@ -209,5 +214,16 @@ onMounted(()=>{
     font-size: 100px;
     font-family: PING FANG YU TONG;
   }
+}
+@media (max-width: 768px) {
+  .my-profile{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 6fr 1fr;
+    justify-content: center;
+    .icon-name{
+      font-size: 50px;
+    }
+  }
+
 }
 </style>

@@ -415,4 +415,28 @@ onMounted(() => {
   }
 }
 
+@media (max-width:786px) {
+  .message-text{
+    margin-top: 0px;
+    span{
+      font-size: 50px;
+      line-height: 1.5em;
+    }
+  }
+  .message-container{
+    height: auto;
+    .card-container{
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      .card-preview{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+  }
+  
+}
+
 </style>

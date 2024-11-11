@@ -16,7 +16,8 @@
         <div class="image">
         </div>
       </div>
-    </div>    
+    </div>   
+     
     <div class="image-outer-container2">
       <div class="image-container">
         <div class="image">
@@ -117,8 +118,9 @@ onMounted(()=>{
   *! 这个效果很不错
   */
 
-
-  const photos = gsap.utils.toArray([
+  const mm = gsap.matchMedia()
+  mm.add("(min-width:768px)",()=>{
+    const photos = gsap.utils.toArray([
     '.image-outer-container1',
     '.image-outer-container2',
     '.image-outer-container3',
@@ -146,6 +148,9 @@ onMounted(()=>{
   })  
   // 使用pin会影响间距
   //gsap modifier 实现旋转木马
+  })
+
+
 })
 </script>
 
@@ -366,6 +371,42 @@ onMounted(()=>{
     text-align: center;
     width: 100%;
     height: 150px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .image-container{
+    height: auto;
+    margin-bottom: 100px;
+    @for $i from 1 through 6{
+      .image-outer-container#{$i}{
+        margin: 0 auto;
+        rotate: 0deg;
+        position: static;
+        scale: 0.8;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .camera-container{
+    .text-container{
+      margin-top: 100px;
+      .desktopContentSection{
+        text-align: center;
+        font-size: 32px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
+
+    .title{
+      padding-top: 100px;
+      font-size: 50px;
+      line-height: 1.5em;
+      height: auto;
+    }
   }
 }
 
