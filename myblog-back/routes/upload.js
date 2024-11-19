@@ -52,12 +52,11 @@ const objForEach = (obj, fn) => {
 }
 
 const saveFiles = (req, time = 0) => {
-
   return new Promise((reslove, rejects) => {
     const imgLinks = []
     const form = new formidable({ multiples: true })
     if (isWindows) {
-      const tmpPath = path.resolve(__dirname, '..', '..', TMP_FOLDER)
+      const tmpPath = path.resolve(__dirname, '..', 'public', TMP_FOLDER)
       if (!fs.existsSync(tmpPath)) {
         fs.mkdirSync(tmpPath)
       }
@@ -66,12 +65,11 @@ const saveFiles = (req, time = 0) => {
 
     form.parse(req, (err, fields, files) => {
       console.log(files)
-
       if (err) {
         rejects('formidable, form.parse err', err.stack)
       }
       // 存储图片的文件夹
-      const storePath = path.resolve(__dirname, '..', '..', FILE_FOLDER)
+      const storePath = path.resolve(__dirname, '..', 'public', FILE_FOLDER)
       if (!fs.existsSync(storePath)) {
         fs.mkdirSync(storePath)
       }
@@ -109,8 +107,12 @@ const saveFiles = (req, time = 0) => {
 
 
 router.post('/upload-image', async (req, res) => {
-  const data = await saveFiles(req)
-  res.send(data)
+  try {
+    const data = await saveFiles(req)
+    res.send(data)
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 

@@ -5,6 +5,10 @@
     <login-input ref='input' class="login-input"></login-input>
     <login-button @click="checkAccount" :text="text" class="login-button"></login-button>
     </div>
+    <div class="icp">
+      <a href="https://beian.miit.gov.cn/" target="_blank">@备案号  </a>
+      <a href="https://beian.miit.gov.cn/" target="_blank">  冀ICP备2024092243号-1</a>
+    </div>
   </div>
 </template>
   
@@ -54,6 +58,18 @@
 
 
 <style scoped lang="scss">
+
+.icp{
+  bottom: 30px;
+  position: absolute;
+  font-size: 10px;
+
+  a{
+    text-decoration: none;
+    color: gray;
+  }
+}
+
 
 @keyframes movebackground {
   0% {

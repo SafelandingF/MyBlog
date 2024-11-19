@@ -230,8 +230,8 @@ onMounted(() => {
       content: url('../../assets/edit/circle-red.svg')+url('../../assets/edit/circle-yellow.svg')+url('../../assets/edit/circle-green.svg');
       display: block;
       height: 30px;
-      border-radius: 100%;
-      overflow: scroll;
+    
+      overflow: hidden;
     }
     :deep(pre code){
       font-family: Mono;

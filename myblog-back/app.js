@@ -18,7 +18,7 @@ const app = express();
 
 
 app.use(cors())
-app.use(express.static('./public'))
+app.use(express.static('public'))
 app.use(express.static(path.join(__dirname, 'dist')))
 
 
@@ -32,7 +32,8 @@ app.use(jwt({
     '/home',
     '/vistor',
     '/register',
-    '/upload/upload-image'
+    '/upload/upload-image',
+    '/static/*'
   ]
 })
 )
