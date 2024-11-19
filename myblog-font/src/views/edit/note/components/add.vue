@@ -1,12 +1,10 @@
 <template>
   <div class="editor-container" >
-    Add-note
     <div class="info-container">
       <input class="title" type="text" v-model="title" placeholder="请输入标题">
       <input class="description" type="text" v-model="description" placeholder="请输入描述">
       <input class="tags" type="text" v-model="tags" placeholder="请输入标签">
     </div>
-
     <div 
     class="article-editor"
     style="border: 1px solid #ccc">
@@ -24,9 +22,8 @@
       @onCreated="handleCreated"
     />
     </div> 
-    <button @click="addNote">获取实例</button>
+    <button class="save-button" @click="addNote">获取实例</button>
     <div class="preview" v-html="valueHtml"></div>
-    <div class="raw">{{valueHtml}}</div>
   </div>
 </template>
 
@@ -40,6 +37,7 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import { useRoute } from 'vue-router';
 import service from '@/utils/service'
 import { addNoteAPI } from '@/apis/getNote';
+
 // 编辑器实例，必须用 shallowRef 可以通过 .value 获取实例然后调用api
     const tags = ref('')
     const title = ref('')
@@ -49,7 +47,6 @@ import { addNoteAPI } from '@/apis/getNote';
     const route = useRoute()
     const id = route.params.id
     // 内容 HTML
-    
     const toolbarConfig = {
       toolbarKeys:[ 
         'color',
@@ -69,7 +66,6 @@ import { addNoteAPI } from '@/apis/getNote';
         "justifyRight",
         "justifyCenter",
         "|",
-        "insertImage",
         "insertLink",
         "uploadImage",
         "emotion",
@@ -150,15 +146,11 @@ import { addNoteAPI } from '@/apis/getNote';
           console.log(err)
        })
     }
-
-
-
-
 </script>    
 
 <style scoped lang="scss">
 .editor-container {
-  width:85vw;
+  width:90vw;
   height: 100vh;
   margin: 0 auto;
   .article-preview {
@@ -170,31 +162,37 @@ import { addNoteAPI } from '@/apis/getNote';
     display: grid;
     grid-template-areas: 
       'title description'
-      'image description';
+      'tags description';
     ;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 10px;
     .title {
       grid-area: title;
-      margin: 10px;
     }
     .description {
       grid-area: description;
-      margin: 10px;
     }
-    .image {
-      grid-area: image;
-      margin: 10px;
+    .tags {
+      grid-area: tags;
     }
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
-
-
-
-
   .editor {
     height: 100%;
     width: 100%;
-
+  }
+  .save-button{
+    margin: 0 auto;
+    width: 100%;
+    height: 25px;
+    background-color: #4183c4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
 }
@@ -203,14 +201,14 @@ import { addNoteAPI } from '@/apis/getNote';
 .raw{
   width: 100vw;
   height: auto;
-
 }
 
 // NOTE: 这里需要样式穿透
 // ：deep影响到子组件
 .preview{
   width: 100%;
-  height: 300px;
+  min-height: 300px;
+  height: auot;
   border: 1px solid #ccc;
   overflow-y: scroll;
   overflow-x: hidden;

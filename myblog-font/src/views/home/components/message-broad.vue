@@ -244,15 +244,15 @@ onMounted(() => {
     "preview preview full ";
     grid-template-columns: 3fr 3fr 5fr;
     grid-template-rows: 1fr 1fr;
-    column-gap: 15px;
-    row-gap: 20px;
+    column-gap: 30px;
+    row-gap: 30px;
     .card-preview {
       gap: 15px;
       grid-area: preview;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      column-gap: 15px;
+      column-gap: 35px;
     }
     .card-full {
       grid-area: full;  

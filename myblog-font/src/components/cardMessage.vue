@@ -88,16 +88,19 @@ const clickDislike = ()=>{
 <style scoped lang="scss">
 
 .card {
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
   cursor: pointer;
   width: 100%;
   background-color: #f6f3ec;
   opacity: 0.9;
+  border-radius: 10px;
   .top-bar{
+    border-radius: 10px;
     color: 232139;
     font-family: PING FANG YU TONG;
     padding-top: 10px;
-    padding-left: 5px;
     padding-bottom: 10px;
+    padding-right: -5px;
     width: 100%;
     height: 30px;
     background-color: #f6f3ec;
@@ -133,7 +136,7 @@ const clickDislike = ()=>{
     cursor: pointer;
     min-height: 20px;
     border-bottom: 2px solid #6f6e6d; 
-
+    border-radius: 10px;
     .like{
       width: 50%;
       display: flex;

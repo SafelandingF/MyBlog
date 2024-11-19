@@ -23,9 +23,8 @@
       @onCreated="handleCreated"
     />
     </div> 
-    <button @click="editArticle">获取实例</button>
+    <button class="save-button" @click="editArticle">获取实例</button>
     <div class="preview" v-html="valueHtml"></div>
-    <div class="raw">{{valueHtml}}</div>
   </div>
 </template>
 
@@ -73,7 +72,6 @@ import service from '@/utils/service'
         "justifyRight",
         "justifyCenter",
         "|",
-        "insertImage",
         "insertLink",
         "uploadImage",
         "emotion",
@@ -182,7 +180,7 @@ import service from '@/utils/service'
 
 <style scoped lang="scss">
 .editor-container {
-  width:85vw;
+  width:90vw;
   height: 100vh;
   margin: 0 auto;
   .article-preview {
@@ -198,27 +196,33 @@ import service from '@/utils/service'
     ;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 10px;
     .title {
       grid-area: title;
-      margin: 10px;
     }
     .description {
       grid-area: description;
-      margin: 10px;
     }
     .image {
       grid-area: image;
-      margin: 10px;
     }
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
-
-
-
-
   .editor {
     height: 100%;
     width: 100%;
-
+  }
+  .save-button{
+    margin: 0 auto;
+    width: 100%;
+    height: 25px;
+    background-color: #4183c4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
 }
@@ -227,14 +231,14 @@ import service from '@/utils/service'
 .raw{
   width: 100vw;
   height: auto;
-
 }
 
 // NOTE: 这里需要样式穿透
 // ：deep影响到子组件
 .preview{
   width: 100%;
-  height: 300px;
+  min-height: 300px;
+  height: auot;
   border: 1px solid #ccc;
   overflow-y: scroll;
   overflow-x: hidden;

@@ -48,7 +48,8 @@ router.post('/addarticle', (req, res) => {
   db(sql)
     .then(result => {
       res.send({
-        message: 'success'
+        message: 'success',
+        data: result.insertId
       })
     })
     .catch(err => {

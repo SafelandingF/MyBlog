@@ -55,16 +55,16 @@ const saveFiles = (req, time = 0) => {
   return new Promise((reslove, rejects) => {
     const imgLinks = []
     const form = new formidable({ multiples: true })
-    if (isWindows) {
-      const tmpPath = path.resolve(__dirname, '..', 'public', TMP_FOLDER)
-      if (!fs.existsSync(tmpPath)) {
-        fs.mkdirSync(tmpPath)
-      }
-      form.uploadDir = TMP_FOLDER
-    }
-
+    // 好神经啊 这个在windows不触发 在lunix下触发
+    // if (!isWindows) {
+    //   console.log('123')
+    //   const tmpPath = path.resolve(__dirname, '..', 'public', TMP_FOLDER)
+    //   if (!fs.existsSync(tmpPath)) {
+    //     fs.mkdirSync(tmpPath)
+    //   }
+    //   form.uploadDir = TMP_FOLDER
+    // }
     form.parse(req, (err, fields, files) => {
-      console.log(files)
       if (err) {
         rejects('formidable, form.parse err', err.stack)
       }
@@ -76,8 +76,7 @@ const saveFiles = (req, time = 0) => {
       // console.log('fields......', fields)
       objForEach(files, (name, file) => {
         console.log('name', name)
-        // console.log(file)
-        const tempFilePath = file[0].filepath
+        const tempFilePath = path.resolve(storePath, file[0].filepath)
         const fileName = genRandomFileName(file[0].originalFilename || file[0].name || file)
         console.log('fileName', fileName)
         const fullFillName = path.resolve(storePath, fileName)
@@ -98,7 +97,6 @@ const saveFiles = (req, time = 0) => {
           errno: 0,
           data: data
         })
-
       })
     })
 
