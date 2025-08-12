@@ -8,9 +8,9 @@ const { port } = require('./config.js').server
 const jwtConfig = require('./jwt/config.js')
 const history = require('connect-history-api-fallback')
 //! 设置路由托管
-const login = require('./routes/login')
-const message = require('./routes/message')
-const user = require('./routes/user')
+const login = require('./routes/login.js')
+const message = require('./routes/message.js')
+const user = require('./routes/user.js')
 const article = require('./routes/article.js')
 const note = require('./routes/note.js')
 const uploadImage = require('./routes/upload.js')
