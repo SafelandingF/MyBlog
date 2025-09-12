@@ -25,12 +25,13 @@ router.beforeEach((to, from, next) => {
   const userInfoStore = useUserinfoStore()
   // FIXME: 这里有一个问题就是，token会过期，所以需要重新登录
   // FIXME: 这里有莫名其妙的错误，暂时先注释掉 不进行to.name判断无法跳转
-  if (!localStorage.getItem('token') && to.name === 'home') {
-    next('/vistor')
-  }
-  else {
-    next()
-  }
+  // if (!localStorage.getItem('token') && to.name === 'home') {
+  //   next('/vistor')
+  // }
+  // else {
+  //   next()
+  // }
+  next()
 })
 
 
