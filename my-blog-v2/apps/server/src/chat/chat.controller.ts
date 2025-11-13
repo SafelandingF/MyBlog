@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
 import { ChatService } from './chat.service';
-import { ZodValidationPipe } from '@/common/zod-validation.pipe';
+import { ZodValidationPipe } from '../common/zod-validation.pipe';
 import type { infer as ZodInfer } from 'zod';
 import { z } from 'zod';
 import {

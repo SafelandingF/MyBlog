@@ -1,16 +1,22 @@
 {
   "name": "@my-blog-v2/shared",
   "version": "1.0.0",
-  "main": "./src/types/index.d.ts",
-  "types": "./src/types/index.d.ts",
+  "types": "./dist/schemas/index.d.ts",
   "exports": {
-    "./types": "./src/types/index.d.ts",
-    "./schemas": "./src/schemas/index.ts"
+    "./schemas": {
+      "require": "./dist/schemas/index.cjs",
+      "import": "./dist/schemas/index.mjs",
+      "types": "./dist/schemas/index.d.ts"
+    }
   },
   "devDependencies": {
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "tsup": "^8.3.0"
   },
   "dependencies": {
     "zod": "^4.1.12"
+  },
+  "scripts": {
+    "build": "tsup"
   }
 }

@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { MeshyConfig } from 'src/config/type';
+import { MeshyConfig } from '../config/type';
 import type { ZodTypeAny, infer as ZodInfer } from 'zod';
 import {
   createTextTo3DPreviewRequestSchema,
