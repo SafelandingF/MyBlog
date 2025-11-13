@@ -1,21 +1,37 @@
-import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
-import type { ZodSchema, ZodError } from 'zod';
+import {
+  ArgumentMetadata,
+  BadRequestException,
+  Injectable,
+  PipeTransform,
+} from '@nestjs/common';
+import type { ZodError, ZodIssue } from 'zod';
+
+type OutputOf<TSchema> = TSchema extends { _output: infer T } ? T : unknown;
 
 @Injectable()
-export class ZodValidationPipe implements PipeTransform {
-  constructor(private readonly schema: ZodSchema<any>) {}
+export class ZodValidationPipe<TSchema>
+  implements PipeTransform<unknown, OutputOf<TSchema>>
+{
+  constructor(
+    private readonly schema: {
+      safeParse: (
+        data: unknown,
+      ) =>
+        | { success: true; data: OutputOf<TSchema> }
+        | { success: false; error: ZodError };
+    },
+  ) {}
 
-  transform(value: unknown, _metadata: ArgumentMetadata) {
+  transform(value: unknown, _metadata: ArgumentMetadata): OutputOf<TSchema> {
+    void _metadata;
     const result = this.schema.safeParse(value);
     if (!result.success) {
-      const error: ZodError = result.error;
-      const firstIssue = error.issues?.[0];
-      const message =
-        firstIssue?.message ??
-        'Invalid request payload';
+      const error = result.error;
+      const firstIssue: ZodIssue | undefined = error.issues?.[0];
+      const message = firstIssue?.message ?? 'Invalid request payload';
       throw new BadRequestException({
         message,
-        issues: error.issues?.map(i => ({
+        issues: error.issues?.map((i: ZodIssue) => ({
           path: i.path?.join('.') ?? '',
           code: i.code,
           message: i.message,
@@ -25,5 +41,3 @@ export class ZodValidationPipe implements PipeTransform {
     return result.data;
   }
 }
-
-

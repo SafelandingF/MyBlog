@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post, UsePipes } from '@nestjs/common';
 import { ChatService } from './chat.service';
 import { ZodValidationPipe } from '@/common/zod-validation.pipe';
 import type { infer as ZodInfer } from 'zod';
+import { z } from 'zod';
 import {
   createTextTo3DPreviewRequestSchema,
   createTextTo3DRefineRequestSchema,
@@ -20,11 +21,14 @@ export class ChatController {
       z.discriminatedUnion('mode', [
         createTextTo3DPreviewRequestSchema,
         createTextTo3DRefineRequestSchema,
-      ])
-    )
+      ]),
+    ),
   )
   async createTextTo3D(
-    @Body() body: ZodInfer<typeof createTextTo3DPreviewRequestSchema> | ZodInfer<typeof createTextTo3DRefineRequestSchema>
+    @Body()
+    body:
+      | ZodInfer<typeof createTextTo3DPreviewRequestSchema>
+      | ZodInfer<typeof createTextTo3DRefineRequestSchema>,
   ) {
     return await this.chatService.createTextTo3D(body);
   }
@@ -36,7 +40,9 @@ export class ChatController {
 
   @Post('image-to-3d')
   @UsePipes(new ZodValidationPipe(createImageTo3DRequestSchema))
-  async createImageTo3D(@Body() body: ZodInfer<typeof createImageTo3DRequestSchema>) {
+  async createImageTo3D(
+    @Body() body: ZodInfer<typeof createImageTo3DRequestSchema>,
+  ) {
     return await this.chatService.createImageTo3D(body);
   }
 
@@ -58,7 +64,9 @@ export class ChatController {
 
   @Post('retexture')
   @UsePipes(new ZodValidationPipe(createRetextureRequestSchema))
-  async createRetexture(@Body() body: ZodInfer<typeof createRetextureRequestSchema>) {
+  async createRetexture(
+    @Body() body: ZodInfer<typeof createRetextureRequestSchema>,
+  ) {
     return await this.chatService.createRetexture(body);
   }
 

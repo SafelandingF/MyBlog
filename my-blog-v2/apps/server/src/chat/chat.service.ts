@@ -39,7 +39,7 @@ export class ChatService {
   private async doPost<TSchema extends ZodTypeAny>(
     path: string,
     body: unknown,
-    responseSchema: TSchema
+    responseSchema: TSchema,
   ): Promise<ZodInfer<TSchema>> {
     const url = `${this.apiBase}${path}`;
     const res = await fetch(url, {
@@ -47,60 +47,92 @@ export class ChatService {
       headers: this.getHeaders(),
       body: JSON.stringify(body),
     });
-    const json = await res.json();
+    const json = (await res.json()) as ZodInfer<TSchema>;
     if (!res.ok) {
-      throw new HttpException(json ?? { message: 'Meshy API error' }, res.status);
+      throw new HttpException(
+        json ?? { message: 'Meshy API error' },
+        res.status,
+      );
     }
     const parsed = (responseSchema as ZodTypeAny).safeParse(json);
     if (!parsed.success) {
-      throw new HttpException({ message: 'Invalid response from Meshy API', issues: parsed.error.issues }, 502);
+      throw new HttpException(
+        {
+          message: 'Invalid response from Meshy API',
+          issues: parsed.error.issues,
+        },
+        502,
+      );
     }
-    return parsed.data;
+    return parsed.data as ZodInfer<TSchema>;
   }
 
   private async doGet<TSchema extends ZodTypeAny>(
     path: string,
-    responseSchema: TSchema
+    responseSchema: TSchema,
   ): Promise<ZodInfer<TSchema>> {
     const url = `${this.apiBase}${path}`;
     const res = await fetch(url, {
       method: 'GET',
       headers: this.getHeaders(),
     });
-    const json = await res.json();
+    const json = (await res.json()) as ZodInfer<TSchema>;
     if (!res.ok) {
-      throw new HttpException(json ?? { message: 'Meshy API error' }, res.status);
+      throw new HttpException(
+        json ?? { message: 'Meshy API error' },
+        res.status,
+      );
     }
     const parsed = (responseSchema as ZodTypeAny).safeParse(json);
     if (!parsed.success) {
-      throw new HttpException({ message: 'Invalid response from Meshy API', issues: parsed.error.issues }, 502);
+      throw new HttpException(
+        {
+          message: 'Invalid response from Meshy API',
+          issues: parsed.error.issues,
+        },
+        502,
+      );
     }
-    return parsed.data;
+    return parsed.data as ZodInfer<TSchema>;
   }
 
   async createTextTo3D(
-    payload: ZodInfer<typeof createTextTo3DPreviewRequestSchema> | ZodInfer<typeof createTextTo3DRefineRequestSchema>
+    payload:
+      | ZodInfer<typeof createTextTo3DPreviewRequestSchema>
+      | ZodInfer<typeof createTextTo3DRefineRequestSchema>,
   ) {
-    return await this.doPost('/text-to-3d', payload, createTextTo3DResponseSchema);
+    return await this.doPost(
+      '/text-to-3d',
+      payload,
+      createTextTo3DResponseSchema,
+    );
   }
 
   async getTextTo3DTask(taskId: string) {
-    return await this.doGet(`/text-to-3d/${taskId}`, textTo3DTaskResponseSchema);
+    return await this.doGet(
+      `/text-to-3d/${taskId}`,
+      textTo3DTaskResponseSchema,
+    );
   }
 
   async createImageTo3D(
-    payload: ZodInfer<typeof createImageTo3DRequestSchema>
+    payload: ZodInfer<typeof createImageTo3DRequestSchema>,
   ) {
-    return await this.doPost('/image-to-3d', payload, createImageTo3DResponseSchema);
+    return await this.doPost(
+      '/image-to-3d',
+      payload,
+      createImageTo3DResponseSchema,
+    );
   }
 
   async getImageTo3DTask(taskId: string) {
-    return await this.doGet(`/image-to-3d/${taskId}`, imageTo3DTaskResponseSchema);
+    return await this.doGet(
+      `/image-to-3d/${taskId}`,
+      imageTo3DTaskResponseSchema,
+    );
   }
 
-  async createRemesh(
-    payload: ZodInfer<typeof createRemeshRequestSchema>
-  ) {
+  async createRemesh(payload: ZodInfer<typeof createRemeshRequestSchema>) {
     return await this.doPost('/remesh', payload, createRemeshResponseSchema);
   }
 
@@ -109,12 +141,19 @@ export class ChatService {
   }
 
   async createRetexture(
-    payload: ZodInfer<typeof createRetextureRequestSchema>
+    payload: ZodInfer<typeof createRetextureRequestSchema>,
   ) {
-    return await this.doPost('/retexture', payload, createRetextureResponseSchema);
+    return await this.doPost(
+      '/retexture',
+      payload,
+      createRetextureResponseSchema,
+    );
   }
 
   async getRetextureTask(taskId: string) {
-    return await this.doGet(`/retexture/${taskId}`, retextureTaskResponseSchema);
+    return await this.doGet(
+      `/retexture/${taskId}`,
+      retextureTaskResponseSchema,
+    );
   }
 }
