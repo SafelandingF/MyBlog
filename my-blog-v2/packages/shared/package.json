@@ -1,5 +1,5 @@
 {
-  "name": "@myblog/shared",
+  "name": "@my-blog-v2/shared",
   "version": "1.0.0",
   "main": "./src/types/index.d.ts",
   "types": "./src/types/index.d.ts",
@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
   }
 }
