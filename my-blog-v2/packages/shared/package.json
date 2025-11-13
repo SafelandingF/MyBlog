@@ -1,0 +1,13 @@
+{
+  "name": "@myblog/shared",
+  "version": "1.0.0",
+  "main": "./src/types/index.d.ts",
+  "types": "./src/types/index.d.ts",
+  "exports": {
+    "./types": "./src/types/index.d.ts",
+    "./schemas": "./src/schemas/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
